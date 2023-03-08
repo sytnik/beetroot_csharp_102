@@ -1,5 +1,6 @@
 ﻿var x = 1;
-Console.WriteLine(OverLd(x)); // + OverLd(x, x));
+OverLd(5);
+// Console.WriteLine(OverLd(x)); // + OverLd(x, x));
 
 // will not compile
 static int OverLd(int x) => x;
