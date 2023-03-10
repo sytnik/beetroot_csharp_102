@@ -1,8 +1,140 @@
-﻿namespace Lesson4;
+﻿using System.Linq;
+
+namespace Lesson4;
 
 // default template with overload
 class Program
 {
+    private int SomeImportantNumber1 = 16;
+
+    enum MyEnum1
+    {
+        Elem1,
+        Elem2,
+        Elem3 = 10,
+        Elem4 = 10,
+        SomeImportantNumber = 15,
+        Elem6
+    }
+
+    enum MyEnum : long // somename - int value from 0
+    {
+        Elem1, //0
+        Elem2, //1
+        Elem3 = 10,
+        Elem4 = 10,
+        SomeImportantNumber = 15, //15
+        Elem6 // 15 + 1
+    }
+
+    enum SortAlgorithmType
+    {
+        Selection,
+        Bubble,
+        Insertion
+    }
+
+    enum OrderBy
+    {
+        Asc,
+        Desc
+    }
+
+    // just extra
+    int[] Sort(SortAlgorithmType type, OrderBy order,
+        params int[] source) => source;
+
+    static void Main()
+    {
+        Console.WriteLine(MyEnum.Elem3); // element name, "Elem3"
+        Console.WriteLine((int)MyEnum.SomeImportantNumber); // elem value
+        // [10, 11, 12]
+        int sum = SumBetween(10, 12);
+        var max = MaxOf(7, 6, 8, 9);
+        int[] arr = CreateRandArray(10);
+    }
+
+    static int SumBetween(int x, int y)
+    {
+        // calculate the sum of all numbers between x and y
+        int sum = 0;
+
+        if (x == y)
+        {
+            sum = x;
+        }
+        else if (x < y)
+        {
+            for (int i = x; i <= y; i++) // from x to y
+            {
+                sum += i;
+            }
+        }
+        else
+        {
+            for (int i = y; i <= x; i++) // from y to x
+            {
+                sum += i;
+            }
+        }
+
+        return sum;
+    }
+
+    static int[] CreateRandArray(int size)
+    {
+        // init array
+        int[] ints = new int[size];
+        // init random
+        Random random = new Random();
+        for (int i = 0; i < size; i++)
+        {
+            ints[i] = random.Next(-size, size);
+        }
+
+        return ints;
+    }
+
+
+    int[] SelectionSort(params int[] source) => source;
+
+    // 2 params, not a collection!
+    int MaxOf(int first, int second) => Math.Max(first, second);
+
+    // params overload, array of elements
+    static int MaxOf(params int[] ints)
+    {
+        // ints {7, 6, 8, 9} * max index = length - 1
+        // ints[0] = 7
+        // ints[3] = 9
+        string s1 = "qwerty";
+        int length1 = s1.Length;
+        int length = ints.Length;
+        int sum = ints.Sum();
+        int min = ints.Min();
+        int max = ints.Max();
+        int maxElem = Math.Max(ints[0], ints[1]);
+        // for loop
+        for (int i = 0; i < ints.Length; i++)
+        {
+            if (i > 2)
+                Console.WriteLine(ints[i]);
+        }
+
+        // not modifying ints
+        foreach (int someVar in ints)
+        {
+            // someVar += 1;
+            Console.WriteLine(someVar);
+        }
+
+        return max;
+    }
+
+    // 4 params
+    int MaxOf(int first, int second, int trird, int fourth) =>
+        Math.Max(Math.Max(Math.Max(first, second), trird), fourth);
+
     // (5,7) -> 18
     // 5 + sum(5+1,7) // 5 + 13
     // 6 + sum(6+1,7) 6 + 7
@@ -48,7 +180,7 @@ class Program
         // }
     }
 
-    static void Main()
+    static void Main1()
     {
         int sum = 0;
         SumParameters(out sum, 1, 2);
