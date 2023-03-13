@@ -13,17 +13,48 @@ class Program
         // LINQ
         // [] - array of some type
         char[] chArr = new[] { 'a', 's', 'd' };
-
+        
         string str = string.Join(',', source);
         string str1 = string.Join(",*, ", source);
         string str2 = string.Join("", chArr);
-
+        
         Console.WriteLine(string.Join(", ", sorted1));
         int[] sorted2 = Sort(SortAlgorithmType.Bubble, OrderBy.Desc, source);
         Console.WriteLine(string.Join(", ", sorted2));
         int[] sorted3 = Sort(SortAlgorithmType.Insertion, OrderBy.Asc, 5, 8, 6, 7, 3, 35, 4);
         int[] sorted4 = Sort(SortAlgorithmType.Insertion, OrderBy.Asc, new[]{5, 8, 6, 7, 3, 35, 4});
         Console.WriteLine(string.Join(", ", sorted3));
+        var t = TwoBeforeLastByRange(1, 2, 3, 4, 5);
+        var a = Sort3d();
+    }
+
+    static int[,,] Sort3d()
+    {
+        // sample 3x4x5 array
+        int[,,] myArray = new int[3, 4, 5]
+        {
+            { { 6, 5, 4, 3, 2 }, { 1, 2, 3, 4, 5 }, { 6, 5, 4, 3, 2 }, { 1, 2, 3, 4, 5 } },
+            { { 9, 8, 7, 6, 5 }, { 4, 5, 6, 7, 8 }, { 9, 8, 7, 6, 5 }, { 4, 5, 6, 7, 8 } },
+            { { 3, 2, 1, 0, 9 }, { 8, 7, 6, 5, 4 }, { 3, 2, 1, 0, 9 }, { 8, 7, 6, 5, 4 } }
+        };
+        // create an one-dimensional temp array
+        int[] flatArray = new int[myArray.Length];
+        // transfer the 3d array to 1d
+        Buffer.BlockCopy(myArray, 0, flatArray,
+            0, sizeof(int) * myArray.Length);
+        // sort 1d array
+        Array.Sort(flatArray);
+        // transfer the sorted 1d array back to the 3d one
+        Buffer.BlockCopy(flatArray, 0, myArray,
+            0, sizeof(int) * myArray.Length);
+        return myArray;
+    }
+
+
+    static int[] TwoBeforeLastByRange(params int[] array)
+    {
+        // from array[3] from last to array[1] from last
+        return array[^3..^1];
     }
 
     // gereral Sort method
@@ -155,7 +186,6 @@ class Program
         var twoLast = arr[^1..^0];
         var two = arr[^2..];
         var two1 = arr[^2..];
-        // todo select l-2 and -3 elems
         var two2 = arr[^3..2];
         // first elem as new array
         Range range1 = new Range(0, 1);
@@ -172,7 +202,6 @@ class Program
         // 1.0 1.1
         // 2.0 2.1
         // 0 0
-        // todo order 2d array
         int[,] arr = new int[4, 2];
         //3-dimensional - cube
         int[,,] array1 = new int[4, 2, 3];
