@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Text.Json;
+using System.Text.RegularExpressions;
 
 namespace Lesson8;
 
@@ -6,20 +7,73 @@ public class Program
 {
     public static void Main(string[] args)
     {
+        WorkWintFile();
+      
         Console.WriteLine("Hello, World!");
-        RegexTest();
+        // RegexTest();
         // Person person - is object of class (of type) Person
-        string name = Console.ReadLine();
-        int age = Convert.ToInt32(Console.ReadLine());
-        Person person = new Person(name, age);
-        person.PrintInfo();
+        // string name = Console.ReadLine();
+        // int age = Convert.ToInt32(Console.ReadLine());
+        // Person person = new Person(name, age);
+        // person.PrintInfo();
+        Person[] persons = new[]
+        {
+            new Person("user1", 25),
+            new Person("user2", 30),
+            new Person("user3", 35)
+        };
+        Serialize(persons);
+        Person[] personsFromFile = Deserialize();
+    }
+
+    public static void Serialize(Person[] persons)
+    {
+        using (var fileStream = 
+               new FileStream("Person.json",
+                   FileMode.OpenOrCreate))
+        {
+            JsonSerializer.Serialize(fileStream, persons);
+        }
+    }
+
+    public static Person[] Deserialize()
+    {
+        using (var fileStream =
+               new FileStream("Person.json",
+                   FileMode.OpenOrCreate))
+        {
+            return JsonSerializer // returns Person[]
+                .Deserialize<Person[]>(fileStream);
+        }
+    }
+    private static void WorkWintFile()
+    {
+        string[] users = File.ReadAllLines("Text.txt");
+        string newUser = "User3 0971236547";
+        File.AppendAllText("Text.txt",
+            Environment.NewLine);
+        File.AppendAllText("Text.txt", newUser);
+        string[] newUserArr = new[] { newUser };
+        File.AppendAllText("Text.txt", "\r\n");
+        File.AppendAllLines("Text.txt", newUserArr);
+        string filePath = "Text1.txt";
+        File.Delete(filePath);
+        if (File.Exists(filePath))
+        {
+            File.Delete(filePath);
+            Console.WriteLine("The file has been deleted.");
+        }
+        else
+        {
+            Console.WriteLine("The file does not exist.");
+        }
     }
 
     // клас Person (public = доступ без обмежень)
     public class Person
     {
         // поле (field) класу
-        public string Name;
+        public string Name { get; set; }
         // властивість (property) класу
         public int Age { get; set; }
 
@@ -88,18 +142,5 @@ public class Program
 
 public class Methods
 {
-    public void Json()
-    {
-        // using (var fileStream = new FileStream("Users.json", FileMode.OpenOrCreate))
-        // {
-        //     JsonSerializer.Serialize(fileStream, users);
-        // }
-        //
-        // List<User> users;
-        // using (var fileStream = new FileStream("Users.json", FileMode.OpenOrCreate))
-        // {
-        //     users = JsonSerializer.Deserialize<List<User>>(fileStream);
-        // }
 
-    }
 }
