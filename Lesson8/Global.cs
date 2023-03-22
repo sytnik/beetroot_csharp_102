@@ -1,0 +1,1 @@
+global using Lesson8.Library;

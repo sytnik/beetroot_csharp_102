@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="545fb998-4cfd-4562-9d8b-b6fafd8b7383" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Beetroot/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Beetroot/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson8/Author.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson8/Library/Author.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson8/Book.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson8/Library/Book.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Lesson8/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson8/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -26,6 +28,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "XThreadsFramesViewSplitterKey": "0.32794458",
     "settings.editor.selected.configurable": "reference.settings.ide.settings.new.ui"
   },
   "keyToStringList": {
@@ -84,55 +87,29 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Lesson8/Program.cs</url>
-          <line>119</line>
-          <properties documentPath="D:\Git\beetroot_csharp_102\Lesson8\Program.cs" initialLine="34" containingFunctionPresentation="method 'TryCatch'">
+          <line>17</line>
+          <properties documentPath="D:\Git\beetroot_csharp_102\Lesson8\Program.cs" initialLine="18" containingFunctionPresentation="method 'Main'">
             <startOffsets>
-              <option value="2971" />
+              <option value="505" />
             </startOffsets>
             <endOffsets>
-              <option value="3050" />
+              <option value="546" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="3" />
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Lesson8/Program.cs</url>
-          <line>133</line>
-          <properties documentPath="D:\Git\beetroot_csharp_102\Lesson8\Program.cs" initialLine="49" containingFunctionPresentation="method 'TryCatch'">
+          <line>8</line>
+          <properties documentPath="D:\Git\beetroot_csharp_102\Lesson8\Program.cs" initialLine="8" containingFunctionPresentation="method 'Main'">
             <startOffsets>
-              <option value="3486" />
+              <option value="190" />
             </startOffsets>
             <endOffsets>
-              <option value="3487" />
+              <option value="213" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Lesson8/Program.cs</url>
-          <line>116</line>
-          <properties documentPath="D:\Git\beetroot_csharp_102\Lesson8\Program.cs" initialLine="31" containingFunctionPresentation="method 'TryCatch'">
-            <startOffsets>
-              <option value="2905" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2936" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Lesson8/Program.cs</url>
-          <line>68</line>
-          <properties documentPath="D:\Git\beetroot_csharp_102\Lesson8\Program.cs" initialLine="42" containingFunctionPresentation="method 'TryIndex'">
-            <startOffsets>
-              <option value="1903" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1925" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="7" />
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
