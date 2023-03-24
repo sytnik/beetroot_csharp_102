@@ -6,9 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="545fb998-4cfd-4562-9d8b-b6fafd8b7383" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Beetroot/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Beetroot/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson8/Author.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson8/Library/Author.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson8/Book.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson8/Library/Book.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson8/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson8/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Beetroot.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Beetroot.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson8/Global.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson11/Global.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson8/Lesson8.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson11/Lesson11.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson8/Library/Author.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson11/Library/Author.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson8/Library/Biography.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson11/Library/Biography.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson8/Library/Book.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson11/Library/Book.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson8/Library/Chapter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson11/Library/Chapter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson8/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson11/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson8/Text.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson11/Text.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +24,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b42dbe862dd51fb5e77e5fe0ab92bfe2f4e9d579a34b2110f5a774eaaf7ec/Number.Parsing.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b64452b1c2944ed3799d830ba18a2df1a3b8e39d12ef88245b77bcb0421714/ThrowHelper.Serialization.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lesson11/Program.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="2NClrEnEuSAVDdIWVIVUzVX7fbq" />
   <component name="ProjectViewState">
@@ -28,7 +35,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "XThreadsFramesViewSplitterKey": "0.32794458",
+    "XThreadsFramesViewSplitterKey": "0.21354765",
     "settings.editor.selected.configurable": "reference.settings.ide.settings.new.ui"
   },
   "keyToStringList": {
@@ -48,7 +55,7 @@
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="USE_MONO" value="0" />
       <option name="RUNTIME_ARGUMENTS" value="" />
-      <option name="PROJECT_PATH" value="$PROJECT_DIR$/Lesson8/Lesson8.csproj" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/Lesson11/Lesson11.csproj" />
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
@@ -86,20 +93,7 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Lesson8/Program.cs</url>
-          <line>17</line>
-          <properties documentPath="D:\Git\beetroot_csharp_102\Lesson8\Program.cs" initialLine="18" containingFunctionPresentation="method 'Main'">
-            <startOffsets>
-              <option value="505" />
-            </startOffsets>
-            <endOffsets>
-              <option value="546" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Lesson8/Program.cs</url>
+          <url>file://$PROJECT_DIR$/Lesson11/Program.cs</url>
           <line>8</line>
           <properties documentPath="D:\Git\beetroot_csharp_102\Lesson8\Program.cs" initialLine="8" containingFunctionPresentation="method 'Main'">
             <startOffsets>
@@ -110,6 +104,19 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Lesson11/Program.cs</url>
+          <line>24</line>
+          <properties documentPath="D:\Git\beetroot_csharp_102\Lesson11\Program.cs" initialLine="23" containingFunctionPresentation="method 'Main'">
+            <startOffsets>
+              <option value="649" />
+            </startOffsets>
+            <endOffsets>
+              <option value="677" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

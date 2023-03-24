@@ -1,32 +1,33 @@
-﻿namespace Lesson8;
+﻿using Lesson11Lib;
+
+namespace Lesson8;
 
 public class Program
 {
+    public int SomeValue;
     public static void Main()
     {
-        Author author = new Author(new List<Book> {new Book()});
-        author.Books.Add(new Book());
-        Book book = new Book();
-        book.Id = 1;
-        book.Authors = new();
-        // Lesson8.Library.Book book = new Lesson8.Library.Book();
-        // no data
-        Person person = new Person();
-        Person person3 = new Person(1, "user3");
-        // person3.Id = 15;
-        // with data from ctor
-        Person person1 = new Person("user1", 25);
-        Person testUser = person1;
-        // from other object of the same type
-        // Person = type/class
-        // person2 = object of type Person
-        Person person2 = new Person(person1);
-        person1.Name = "changedName";
-        // instance method = method of the object
-        person1.PrintInfo();
-        // type
-        Person.PrintInfoStatic(person.Name, person1.Age);
+        UtilityClass util = new UtilityClass();
+        util.Id = 1;
+        // util.Name = "name";
+        PersonRec rec = new();
+        rec = new("FirstName", "LastName", 20);
+        rec = rec with {Age = 21};
+        GC.Collect();
+        var date = DateTime.Now;
+        // create new string with dd:mm
+        string str = date.ToString("dd:mm");
+
+        List<int> ints = new List<int> {1, 2, 3};
+        ints.Add(4);
+        int[] ints2 = new[] {1, 2, 3};
+        Array.Resize(ref ints2, ints2.Length + 1);
+        ints2[ints2.Length - 1] = 4;
+       
     }
+
+    public record PersonRec(string FirstName = "someName",
+        string LastName = "someSurname", int Age = 18);
 
 
     // клас Person (public = доступ без обмежень)
