@@ -6,15 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="545fb998-4cfd-4562-9d8b-b6fafd8b7383" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Beetroot/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Beetroot/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Beetroot.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Beetroot.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson8/Global.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson11/Global.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson8/Lesson8.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson11/Lesson11.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson8/Library/Author.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson11/Library/Author.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson8/Library/Biography.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson11/Library/Biography.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson8/Library/Book.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson11/Library/Book.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson8/Library/Chapter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson11/Library/Chapter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson8/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson11/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson8/Text.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson11/Text.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson11/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson11/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +14,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/06e6b5e410594922af54f5731fb38a29b1c8b0/_588bb/IEquatable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b42dbe862dd51fb5e77e5fe0ab92bfe2f4e9d579a34b2110f5a774eaaf7ec/Number.Parsing.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b64452b1c2944ed3799d830ba18a2df1a3b8e39d12ef88245b77bcb0421714/ThrowHelper.Serialization.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Lesson11/Program.cs" root0="FORCE_HIGHLIGHTING" />
@@ -35,7 +28,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "XThreadsFramesViewSplitterKey": "0.21354765",
+    "XThreadsFramesViewSplitterKey": "0.14006889",
     "settings.editor.selected.configurable": "reference.settings.ide.settings.new.ui"
   },
   "keyToStringList": {
@@ -94,29 +87,55 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Lesson11/Program.cs</url>
-          <line>8</line>
-          <properties documentPath="D:\Git\beetroot_csharp_102\Lesson8\Program.cs" initialLine="8" containingFunctionPresentation="method 'Main'">
+          <line>33</line>
+          <properties documentPath="D:\Git\beetroot_csharp_102\Lesson11\Program.cs" initialLine="29" containingFunctionPresentation="constructor 'Person'">
             <startOffsets>
-              <option value="190" />
+              <option value="845" />
             </startOffsets>
             <endOffsets>
-              <option value="213" />
+              <option value="846" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="10" />
+          <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Lesson11/Program.cs</url>
-          <line>24</line>
-          <properties documentPath="D:\Git\beetroot_csharp_102\Lesson11\Program.cs" initialLine="23" containingFunctionPresentation="method 'Main'">
+          <line>71</line>
+          <properties documentPath="D:\Git\beetroot_csharp_102\Lesson11\Program.cs" initialLine="71" containingFunctionPresentation="property 'DepartmentName'">
             <startOffsets>
-              <option value="649" />
+              <option value="1644" />
             </startOffsets>
             <endOffsets>
-              <option value="677" />
+              <option value="1678" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="12" />
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Lesson11/Program.cs</url>
+          <line>72</line>
+          <properties documentPath="D:\Git\beetroot_csharp_102\Lesson11\Program.cs" initialLine="72" containingFunctionPresentation="property 'DepartmentName'">
+            <startOffsets>
+              <option value="1687" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1755" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Lesson11/Program.cs</url>
+          <line>19</line>
+          <properties documentPath="D:\Git\beetroot_csharp_102\Lesson11\Program.cs" initialLine="19" containingFunctionPresentation="method 'Main'">
+            <startOffsets>
+              <option value="543" />
+            </startOffsets>
+            <endOffsets>
+              <option value="573" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="20" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
