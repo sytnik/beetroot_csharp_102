@@ -1,6 +1,4 @@
-﻿using Lesson11Lib;
-
-namespace Lesson8;
+﻿namespace Lesson8;
 
 public class Program
 {
@@ -8,106 +6,172 @@ public class Program
 
     public static void Main()
     {
-        // List<int> list = new List<int>() {1, 5, 3, 2, 4};
-        // Sorter sorter = new Sorter();
-        // sorter.SetSortStrategy(new BubbleSort());
-        // sorter.Sort(list);
-        // list.Reverse();
-        // sorter.SetSortStrategy(new QuickSort());
-        // sorter.Sort(list);
-        Employee person = new Employee(1, "somePerson", "department");
-        string dep = person.DepartmentName;
-        person.DepartmentName = "dep";
-        person.DepartmentName = "department";
-        Console.WriteLine(person);
-        Console.ReadLine();
+        List<Order> orders = new List<Order>();
+
+        Order order = new Order();
+        order.Id = 1;
+        order.Date = DateTime.Now;
+
+        Order order1 = new Order
+        {
+            Id = 2,
+            Date = DateTime.Now.AddMinutes(30)
+        };
+
+        order.SaveOrder(orders);
+
+        List<Shape> shapes = new List<Shape>
+        {
+            new Circle {Radius = 5},
+            new Rectangle {Width = 2, Height = 7},
+            new Rectangle {Width = 4, Height = 4}
+        };
+        AreaCalculator calc = new AreaCalculator();
+        double sum = Math.Round(calc.TotalArea(shapes.ToArray()), 2);
     }
 }
 
-public class Person : IEquatable<Person>
+public interface IImage
 {
-    protected int Id { get; set; }
-    protected string Name { get; set; }
-    
-    public Person()
+    void Display();
+}
+
+public class RealImage : IImage
+{
+    private readonly string _filename;
+
+    public RealImage(string filename)
     {
+        _filename = filename;
+        LoadFromDisk();
     }
 
-    public Person(int id) => Id = id;
+    public void Display() => Console.WriteLine("Displaying " + _filename);
 
-    public Person(int id, string name)
+    private void LoadFromDisk() => Console.WriteLine("Loading " + _filename);
+}
+
+public class ProxyImage : IImage
+{
+    private readonly string _filename;
+    private RealImage _realImage;
+
+    public ProxyImage(string filename) => _filename = filename;
+
+    public void Display()
     {
-        Id = id;
-        Name = name;
-    }
+        if (_realImage == null)
+        {
+            _realImage = new RealImage(_filename);
+        }
 
-    public override string ToString() =>
-        $"Person: Id:{Id}, Name:{Name}";
-
-    public override bool Equals(object? obj)
-    {
-        if (ReferenceEquals(null, obj)) return false;
-        if (ReferenceEquals(this, obj)) return true;
-        if (obj.GetType() != this.GetType()) return false;
-        return Equals((Person) obj);
-    }
-
-    public bool Equals(Person? other)
-    {
-        return other != null && Id == other.Id;
-    }
-
-    public override int GetHashCode()
-    {
-        return HashCode.Combine(Id, Name);
+        _realImage.Display();
     }
 }
 
-public sealed class Employee : Person
+public class Client
 {
-    private string _departmentName;
-    
-    public string DepartmentName
+    private readonly IImage _image;
+
+    public Client(IImage image) => _image = image;
+
+    public void DisplayImage() => _image.Display();
+}
+
+public interface IShape
+{
+    double Area();
+}
+
+public class Circle2 : IShape
+{
+    public double Radius { get; set; }
+
+    public double Area()
     {
-        get => $"name: {_departmentName}";
-        set => _departmentName = value.Length > 5 ? value : _departmentName;
+        return Math.PI * Math.Pow(Radius, 2);
     }
-    public string DepartmentName1 { get; set; }
-    public void SetDepartmentName(string dep) =>
-        _departmentName = dep.Length > 5 ? dep : _departmentName;
-    public Employee(int id, string departmentName) : base(id) =>
-        _departmentName = departmentName;
-    // public Employee(int id, string departmentName)
-    // {
-    //     Id = id;
-    //     DepartmentName = departmentName;
-    // }
-
-    public Employee(int id, string name, string departmentName) : base(id, name) =>
-        _departmentName = departmentName;
-
-    public override string ToString() =>
-        $"{base.ToString()}, departmentName:{_departmentName}";
 }
 
-public abstract class ISortStrategy
+public abstract class Shape
 {
-    public abstract void Sort(List<int> list);
+    public abstract double Area();
+
+    public string OutputShape()
+    {
+        return "some shape data";
+    }
 }
 
-public class BubbleSort : ISortStrategy
+public class Circle : Shape
 {
-    public override void Sort(List<int> list) => Console.WriteLine("Sorting using bubble sort");
+    public double Radius { get; set; }
+
+    public override double Area()
+    {
+        string data = OutputShape();
+        return Math.PI * Math.Pow(Radius, 2);
+    }
 }
 
-public class QuickSort : ISortStrategy
+public class Rectangle : Shape
 {
-    public override void Sort(List<int> list) => Console.WriteLine("Sorting using quick sort");
+    public double Width { get; set; }
+    public double Height { get; set; }
+
+    public override double Area()
+    {
+        return Width * Height;
+    }
 }
 
-public class Sorter
+public class AreaCalculator
 {
-    private ISortStrategy _sortStrategy;
-    public void SetSortStrategy(ISortStrategy sortStrategy) => _sortStrategy = sortStrategy;
-    public void Sort(List<int> list) => _sortStrategy.Sort(list);
+    // area can be
+    // circle
+    // square
+    // any other type with Area()
+    public double TotalArea(Shape[] shapes)
+    {
+        double area = 0;
+
+        foreach (var shape in shapes)
+        {
+            area += shape.Area();
+        }
+
+        return area;
+    }
+}
+
+public interface IOrder
+{
+    public int Id { get; set; }
+    public DateTime Date { get; set; }
+    public string CustomerName { get; set; }
+}
+
+public class Order : IOrder
+{
+    public int Id { get; set; }
+    public DateTime Date { get; set; }
+    public string CustomerName { get; set; }
+    public string Address { get; set; }
+    public string Email { get; set; }
+
+    public void SaveOrder(List<Order> userOrders)
+    {
+        if (Id > 0) userOrders.Add(this);
+    }
+}
+
+public class OrderNotification
+{
+    // send via viber/tg etc.
+    // different order types
+    public void SendEmail(IOrder order)
+    {
+        Console.WriteLine($"Hello {order.CustomerName}," +
+                          $" your order {order.Id} has been submitted");
+    }
 }

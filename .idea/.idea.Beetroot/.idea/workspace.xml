@@ -28,7 +28,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "XThreadsFramesViewSplitterKey": "0.14006889",
+    "XThreadsFramesViewSplitterKey": "0.14209591",
     "settings.editor.selected.configurable": "reference.settings.ide.settings.new.ui"
   },
   "keyToStringList": {
@@ -87,55 +87,16 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Lesson11/Program.cs</url>
-          <line>33</line>
-          <properties documentPath="D:\Git\beetroot_csharp_102\Lesson11\Program.cs" initialLine="29" containingFunctionPresentation="constructor 'Person'">
+          <line>30</line>
+          <properties documentPath="D:\Git\beetroot_csharp_102\Lesson11\Program.cs" initialLine="13" containingFunctionPresentation="method 'Main'">
             <startOffsets>
-              <option value="845" />
+              <option value="734" />
             </startOffsets>
             <endOffsets>
-              <option value="846" />
+              <option value="735" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Lesson11/Program.cs</url>
-          <line>71</line>
-          <properties documentPath="D:\Git\beetroot_csharp_102\Lesson11\Program.cs" initialLine="71" containingFunctionPresentation="property 'DepartmentName'">
-            <startOffsets>
-              <option value="1644" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1678" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Lesson11/Program.cs</url>
-          <line>72</line>
-          <properties documentPath="D:\Git\beetroot_csharp_102\Lesson11\Program.cs" initialLine="72" containingFunctionPresentation="property 'DepartmentName'">
-            <startOffsets>
-              <option value="1687" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1755" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Lesson11/Program.cs</url>
-          <line>19</line>
-          <properties documentPath="D:\Git\beetroot_csharp_102\Lesson11\Program.cs" initialLine="19" containingFunctionPresentation="method 'Main'">
-            <startOffsets>
-              <option value="543" />
-            </startOffsets>
-            <endOffsets>
-              <option value="573" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="20" />
+          <option name="timeStamp" value="21" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
