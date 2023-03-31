@@ -14,8 +14,4 @@
     </None>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Lesson11Lib\Lesson11Lib.csproj" />
-  </ItemGroup>
-
 </Project>
