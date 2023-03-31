@@ -4,35 +4,48 @@ public class Program
 {
     public int SomeValue;
 
-    public static void Main()
-    {
-        // BoxingUnboxingTest();
-        Point p1 = new Point {X = 10, Y = 20};
-        // p1.somenonstaticmethod();
-        // Point.staticMethod();
-        // Point p2 = new Point {X = 5, Y = 15};
-        // Point p3 = p1 + p2;
-        // p3 = p2 + 5;
-        // Point p4 = Point.SubtractPoints(p1, p2);
-        // MyCollection collection = new MyCollection();
-        // collection[0] = 42;
-        // collection[0] = 100;
-        // int value = collection[0];
-        // int value2 = collection[5];
-        List<PersonDataAccessObjectDAO> dataBase = new List<PersonDataAccessObjectDAO>
-        {
-            new() {Id = 1, FirstName = "FirstName1", LastName = "LastName1", OtherInfo = "info1"},
-            new() {Id = 2, FirstName = "FirstName2", LastName = "LastName2", OtherInfo = "info"},
-            new() {Id = 3, FirstName = "FirstName3", LastName = "LastName3", OtherInfo = "info"},
-            new() {Id = 4, FirstName = "FirstName4", LastName = "LastName4", OtherInfo = "info"},
-            new() {Id = 5, FirstName = "FirstName5", LastName = "LastName5", OtherInfo = "info"},
-        };
+    // public static void Main()
+    // {
+    //     // BoxingUnboxingTest();
+    //     Point p1 = new Point {X = 10, Y = 20};
+    //     // p1.somenonstaticmethod();
+    //     // Point.staticMethod();
+    //     // Point p2 = new Point {X = 5, Y = 15};
+    //     // Point p3 = p1 + p2;
+    //     // p3 = p2 + 5;
+    //     // Point p4 = Point.SubtractPoints(p1, p2);
+    //     // MyCollection collection = new MyCollection();
+    //     // collection[0] = 42;
+    //     // collection[0] = 100;
+    //     // int value = collection[0];
+    //     // int value2 = collection[5];
+    //     List<PersonDataAccessObjectDAO> dataBase = new List<PersonDataAccessObjectDAO>
+    //     {
+    //         new() {Id = 1, FirstName = "FirstName1", LastName = "LastName1", OtherInfo = "info1"},
+    //         new() {Id = 2, FirstName = "FirstName2", LastName = "LastName2", OtherInfo = "info"},
+    //         new() {Id = 3, FirstName = "FirstName3", LastName = "LastName3", OtherInfo = "info"},
+    //         new() {Id = 4, FirstName = "FirstName4", LastName = "LastName4", OtherInfo = "info"},
+    //         new() {Id = 5, FirstName = "FirstName5", LastName = "LastName5", OtherInfo = "info"},
+    //     };
+    //
+    //     // return collection (all users)
+    //     // print firstname + lastname(0) + info
+    //     var output = OutputData(dataBase);
+    // }
 
-        // return collection (all users)
-        // print firstname + lastname(0) + info
-        var output = OutputData(dataBase);
+    public static void Main() => new ConcreteClass().MethodNoImpl();
+
+    interface IInterface
+    {
+        public void MethodNoImpl();
+        public void MethodWithImpl() => Console.WriteLine("It's the interface method");
     }
 
+    public class ConcreteClass : IInterface
+    {
+        public void MethodNoImpl() => ((IInterface) this).MethodWithImpl();
+    }
+    
     public static PersonDTO[] OutputData(List<PersonDataAccessObjectDAO> dao)
     {
         PersonDTO[] res = new PersonDTO[dao.Count];
@@ -49,25 +62,6 @@ public class Program
         return res;
     }
 
-    interface IInterface
-    {
-        public void DoSmth1();
-
-        public void DoSmth()
-        {
-            Console.WriteLine("123");
-        }
-    }
-
-    public class MyClass : IInterface
-    {
-        public void DoSmth1()
-        {
-            // DoSmth();
-            throw new NotImplementedException();
-        }
-    }
-    
     public readonly record struct PersonDTO(
         string FirstName, char LastName, string Info);
 
@@ -106,7 +100,7 @@ public class Program
             _data.Clear();
         }
     }
-    
+
     public class Point
     {
         public int X { get; set; }
@@ -124,7 +118,7 @@ public class Program
         public static Point SubtractPoints(Point p1, Point p2)
             => new() {X = p1.X - p2.X, Y = p1.Y - p2.Y};
     }
-    
+
     static void BoxingUnboxingTest()
     {
         // boxing: value type -> object
