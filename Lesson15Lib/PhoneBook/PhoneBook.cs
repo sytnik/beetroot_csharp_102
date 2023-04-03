@@ -1,5 +1,4 @@
-﻿using Lesson15Lib.Interfaces;
-using Lesson15Lib.Persons;
+﻿using Lesson15Lib.Persons;
 
 namespace Lesson15Lib.PhoneBook;
 

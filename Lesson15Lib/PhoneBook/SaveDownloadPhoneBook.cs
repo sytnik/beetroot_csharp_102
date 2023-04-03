@@ -1,18 +1,19 @@
-﻿using System.Text.Json;
-
-namespace Lesson15Lib.PhoneBook;
+﻿namespace Lesson15Lib.PhoneBook;
 
 public class SaveDownloadPhoneBook
 {
+    private static readonly JsonSerializerSettings Settings = new()
+        {TypeNameHandling = TypeNameHandling.Auto};
+
     public static void Serialize(PhoneBook phoneBook)
     {
-        using var fileStream = new FileStream("MyPhoneBook.json", FileMode.OpenOrCreate);
-        JsonSerializer.Serialize(fileStream, phoneBook);
+        var json = JsonConvert.SerializeObject(phoneBook, Settings);
+        File.WriteAllText(FilePath, json);
     }
 
     public static PhoneBook Deserialize()
     {
-        using var fileStream = new FileStream("MyPhoneBook.json", FileMode.OpenOrCreate);
-        return JsonSerializer.Deserialize<PhoneBook>(fileStream);
+        var text = File.ReadAllText(FilePath);
+        return JsonConvert.DeserializeObject<PhoneBook>(text, Settings);
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace Lesson15Lib.Exceptions;
+﻿
+
+namespace Lesson15Lib.Exceptions;
 
 public class PersonException : Exception
 {

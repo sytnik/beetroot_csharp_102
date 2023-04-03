@@ -3,17 +3,17 @@ using Lesson15Lib.Interfaces;
 
 namespace Lesson15Lib.Persons;
 
-public class Collegues : Person, IContact
+public class Collegue : Person, IContact
 {
     private string _company;
-
+    
     public string Company
     {
         get => _company;
         set => _company = PersonInputValuesChecker.CheckName(value, nameof(Company));
     }
 
-    public Collegues(string phoneNumber, string lastName, string firstName, string company) : base(phoneNumber,
+    public Collegue(string phoneNumber, string lastName, string firstName, string company) : base(phoneNumber,
         lastName, firstName)
     {
         try

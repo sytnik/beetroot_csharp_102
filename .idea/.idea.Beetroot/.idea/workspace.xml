@@ -6,17 +6,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="545fb998-4cfd-4562-9d8b-b6fafd8b7383" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Lesson15/GenericStack.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lesson15Lib/AppSetup.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lesson15Lib/Global.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Beetroot/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Beetroot/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Beetroot.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Beetroot.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson14/Global.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson14/Lesson14.csproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson14/Library/Author.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson14/Library/Biography.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson14/Library/Book.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson14/Library/Chapter.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson14/Program.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson14/Text.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson15/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson15/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson15Lib/Exceptions/PersonException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson15Lib/Exceptions/PersonException.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson15Lib/Lesson15Lib.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson15Lib/Lesson15Lib.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson15Lib/Persons/Collegues.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson15Lib/Persons/Collegue.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson15Lib/Persons/Family.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson15Lib/Persons/Family.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson15Lib/PhoneBook/PhoneBook.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson15Lib/PhoneBook/PhoneBook.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson15Lib/PhoneBook/SaveDownloadPhoneBook.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson15Lib/PhoneBook/SaveDownloadPhoneBook.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,11 +24,14 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/06e6b5e410594922af54f5731fb38a29b1c8b0/_588bb/IEquatable.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/29ea32a76b2a6b8eb246f247df6a6a86d887384b4c31db2a35effccdd86c24/JsonSerializerInternalReader.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/36e740b59df23626d207e72ea77e34298e53dd99db463eee529f8c416b5664/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/6879c9ed20391a5ccfea363be5964fbcfe4f1dfde9558aa84b36df6b6ec92c6/List.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/956b549ed7b8253735182c4dc269a2fe4528754d21916ee9386b8507a884e2/JsonConverterOfT.ReadCore.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b42dbe862dd51fb5e77e5fe0ab92bfe2f4e9d579a34b2110f5a774eaaf7ec/Number.Parsing.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b64452b1c2944ed3799d830ba18a2df1a3b8e39d12ef88245b77bcb0421714/ThrowHelper.Serialization.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d21b7762cacc43d8df63e848b7f33c38133ab57c5e72f188680b4f2d7e44d3a/JsonSerializer.Read.Stream.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f3981d658666ec9cc1e6958fe22f8614bfe02ccb6625b056c3ece3729c9262/JsonConvert.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Lesson15/Program.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="2NClrEnEuSAVDdIWVIVUzVX7fbq" />
@@ -40,21 +42,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.09299655&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.new.ui&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "XThreadsFramesViewSplitterKey": "0.09299655",
+    "settings.editor.selected.configurable": "reference.settings.ide.settings.new.ui"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\Oleh\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\Oleh\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\Oleh\\AppData\\Local\\Symbols\\src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\Oleh\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache",
+      "C:\\Users\\Oleh\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache",
+      "C:\\Users\\Oleh\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Project.HomeTaskText">
     <configuration name="HomeTaskText" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -121,16 +123,16 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Lesson15/Program.cs</url>
-          <line>12</line>
-          <properties documentPath="D:\Git\beetroot_csharp_102\Lesson15\Program.cs" initialLine="12" containingFunctionPresentation="">
+          <line>40</line>
+          <properties documentPath="D:\Git\beetroot_csharp_102\Lesson15\Program.cs" initialLine="40" containingFunctionPresentation="">
             <startOffsets>
-              <option value="674" />
+              <option value="1454" />
             </startOffsets>
             <endOffsets>
-              <option value="717" />
+              <option value="1492" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="23" />
+          <option name="timeStamp" value="36" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

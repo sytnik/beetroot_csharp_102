@@ -7,12 +7,15 @@ public class Family : Person, IContact
 {
     private string _relationship;
 
-    [JsonProperty]
-    private string relationship { get => _relationship; set => _relationship = value; }
-
     public string Relationship => _relationship;
 
-    public Family(string phoneNumber, string lastName, string firstName, int relationship) : base(phoneNumber, lastName, firstName) => SetRelationship(relationship);
+    public Family(string phoneNumber, string lastName, string firstName, int relationship) : base(phoneNumber, lastName,
+        firstName) => SetRelationship(relationship);
+
+    [JsonConstructor]
+    public Family(string phoneNumber, string lastName, string firstName, string relationship) : base(phoneNumber,
+        lastName,
+        firstName) => _relationship = relationship;
 
     public void SetRelationship(int relationship) => _relationship = relationship switch
     {
@@ -24,5 +27,6 @@ public class Family : Person, IContact
         _ => "Empty",
     };
 
-    public new string GetFullInfo() => $"Full name:\t{LastName,2} {FirstName,2}\nRelationship:\t{Relationship}\nPhone number:\t{PhoneNumber,2}";
+    public new string GetFullInfo() =>
+        $"Full name:\t{LastName,2} {FirstName,2}\nRelationship:\t{Relationship}\nPhone number:\t{PhoneNumber,2}";
 }
