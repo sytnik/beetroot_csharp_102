@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson15Lib", "Lesson15Lib\Lesson15Lib.csproj", "{C10300FB-DD96-4BF7-A154-9A5AE45CF81E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson16Lib", "Lesson16Lib\Lesson16Lib.csproj", "{C10300FB-DD96-4BF7-A154-9A5AE45CF81E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson15", "Lesson15\Lesson15.csproj", "{E97F19BB-4A6F-4EBD-B240-E310919614E8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson16", "Lesson16\Lesson16.csproj", "{E97F19BB-4A6F-4EBD-B240-E310919614E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
