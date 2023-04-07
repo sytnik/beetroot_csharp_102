@@ -45,7 +45,7 @@ public class Game
                 break;
             default: return;
         }
-
+        // -> <-
         if (newDirection == CurrentDirection.OppositeDirection()) return;
         NextDirection = newDirection;
     }

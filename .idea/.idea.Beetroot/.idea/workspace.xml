@@ -9,27 +9,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="545fb998-4cfd-4562-9d8b-b6fafd8b7383" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Lesson17/SnakeGame/GameExtensions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lesson17/Events.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Beetroot/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Beetroot/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Beetroot.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Beetroot.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson16/ConsolePrinter.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson16/GenericStack.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson16/Lesson16.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson17/Lesson17.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson16/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson17/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson16Lib/AppSetup.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson16Lib/Exceptions/PersonException.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson16Lib/Exceptions/PhoneBookSearchException.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson16Lib/Global.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson16Lib/Interfaces/IContact.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson16Lib/Lesson16Lib.csproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson16Lib/MyConsts.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson16Lib/Persons/Collegue.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson16Lib/Persons/Family.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson16Lib/Persons/Person.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson16Lib/Persons/PersonInputValuesChecker.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson16Lib/PhoneBook/PhoneBook.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson16Lib/PhoneBook/PhoneBookSearcher.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson16Lib/PhoneBook/SaveDownloadPhoneBook.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson17/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson17/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson17/SnakeGame/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson17/SnakeGame/Game.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,6 +136,58 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="41" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Lesson17/Events.cs</url>
+          <line>19</line>
+          <properties documentPath="D:\Git\beetroot_csharp_102\Lesson17\Events.cs" initialLine="19" containingFunctionPresentation="Constructor 'Subscriber'">
+            <startOffsets>
+              <option value="346" />
+            </startOffsets>
+            <endOffsets>
+              <option value="380" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="42" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Lesson17/Events.cs</url>
+          <line>24</line>
+          <properties documentPath="D:\Git\beetroot_csharp_102\Lesson17\Events.cs" initialLine="24" containingFunctionPresentation="Method 'HandleEvent'">
+            <startOffsets>
+              <option value="459" />
+            </startOffsets>
+            <endOffsets>
+              <option value="494" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="43" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Lesson17/Events.cs</url>
+          <line>11</line>
+          <properties documentPath="D:\Git\beetroot_csharp_102\Lesson17\Events.cs" initialLine="11" containingFunctionPresentation="Method 'DoSomething'">
+            <startOffsets>
+              <option value="202" />
+            </startOffsets>
+            <endOffsets>
+              <option value="241" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="44" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Lesson17/Program.cs</url>
+          <line>16</line>
+          <properties documentPath="D:\Git\beetroot_csharp_102\Lesson17\Program.cs" initialLine="16" containingFunctionPresentation="">
+            <startOffsets>
+              <option value="413" />
+            </startOffsets>
+            <endOffsets>
+              <option value="493" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="46" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
