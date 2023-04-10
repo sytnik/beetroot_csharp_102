@@ -18,6 +18,9 @@ public static class GameExtensions
         Console.Write("🍏");
     }
 
+    public static string AddTrailing(this string source, string trail = "*-") =>
+        $"{source}{trail}";
+
     public static Direction OppositeDirection(this Direction direction) =>
         direction switch
         {

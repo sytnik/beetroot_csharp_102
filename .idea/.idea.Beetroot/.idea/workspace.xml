@@ -9,10 +9,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="545fb998-4cfd-4562-9d8b-b6fafd8b7383" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Lesson17/Events.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Beetroot/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Beetroot/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson17/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson17/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson17/SnakeGame/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson17/SnakeGame/Game.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Beetroot.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Beetroot.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson17/Events.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson18/Events.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson17/Lesson17.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson18/Lesson18.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson17/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson18/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson17/SnakeGame/Apple.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson18/SnakeGame/Apple.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson17/SnakeGame/Direction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson18/SnakeGame/Direction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson17/SnakeGame/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson18/SnakeGame/Game.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson17/SnakeGame/GameExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson18/SnakeGame/GameExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson17/SnakeGame/Position.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson18/SnakeGame/Position.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson17/SnakeGame/Snake.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson18/SnakeGame/Snake.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,21 +30,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/06e6b5e410594922af54f5731fb38a29b1c8b0/_13f9f/IList.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/06e6b5e410594922af54f5731fb38a29b1c8b0/_588bb/IEquatable.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/06e6b5e410594922af54f5731fb38a29b1c8b0/_ec32c/IEnumerable.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/29ea32a76b2a6b8eb246f247df6a6a86d887384b4c31db2a35effccdd86c24/JsonSerializerInternalReader.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2b644c9ac2255136307ef6adc6ecbc394eb51ad8fe1a2c45d83e77a56268432b/LinkedList.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/36e740b59df23626d207e72ea77e34298e53dd99db463eee529f8c416b5664/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/6879c9ed20391a5ccfea363be5964fbcfe4f1dfde9558aa84b36df6b6ec92c6/List.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7641a1a0695522e81971758464776ba68659afdcd53575f6917f7593181d9345/Dictionary.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/956b549ed7b8253735182c4dc269a2fe4528754d21916ee9386b8507a884e2/JsonConverterOfT.ReadCore.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b42dbe862dd51fb5e77e5fe0ab92bfe2f4e9d579a34b2110f5a774eaaf7ec/Number.Parsing.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b64452b1c2944ed3799d830ba18a2df1a3b8e39d12ef88245b77bcb0421714/ThrowHelper.Serialization.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c53c3a5248b20163ed1d8b829afdda05041cbd8c1a054ffc5f5c5b4ef1d3/Collection.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d21b7762cacc43d8df63e848b7f33c38133ab57c5e72f188680b4f2d7e44d3a/JsonSerializer.Read.Stream.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f3981d658666ec9cc1e6958fe22f8614bfe02ccb6625b056c3ece3729c9262/JsonConvert.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Lesson16/Program.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="2NClrEnEuSAVDdIWVIVUzVX7fbq" />
   <component name="ProjectLevelVcsManager">
@@ -52,7 +45,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "XThreadsFramesViewSplitterKey": "0.0608496",
-    "git-widget-placeholder": "Lesson16",
+    "git-widget-placeholder": "Lesson18",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "settings.editor.selected.configurable": "reference.settings.ide.settings.new.ui"
@@ -74,7 +67,7 @@
       <option name="USE_EXTERNAL_CONSOLE" value="1" />
       <option name="USE_MONO" value="0" />
       <option name="RUNTIME_ARGUMENTS" value="" />
-      <option name="PROJECT_PATH" value="$PROJECT_DIR$/Lesson17/Lesson17.csproj" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/Lesson18/Lesson18.csproj" />
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
@@ -112,33 +105,7 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Lesson17/Program.cs</url>
-          <line>53</line>
-          <properties documentPath="D:\Git\beetroot_csharp_102\Lesson16\Program.cs" initialLine="53" containingFunctionPresentation="">
-            <startOffsets>
-              <option value="1822" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1901" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="40" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Lesson17/Program.cs</url>
-          <line>62</line>
-          <properties documentPath="D:\Git\beetroot_csharp_102\Lesson16\Program.cs" initialLine="62" containingFunctionPresentation="">
-            <startOffsets>
-              <option value="2225" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2261" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="41" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Lesson17/Events.cs</url>
+          <url>file://$PROJECT_DIR$/Lesson18/Events.cs</url>
           <line>19</line>
           <properties documentPath="D:\Git\beetroot_csharp_102\Lesson17\Events.cs" initialLine="19" containingFunctionPresentation="Constructor 'Subscriber'">
             <startOffsets>
@@ -151,7 +118,7 @@
           <option name="timeStamp" value="42" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Lesson17/Events.cs</url>
+          <url>file://$PROJECT_DIR$/Lesson18/Events.cs</url>
           <line>24</line>
           <properties documentPath="D:\Git\beetroot_csharp_102\Lesson17\Events.cs" initialLine="24" containingFunctionPresentation="Method 'HandleEvent'">
             <startOffsets>
@@ -164,7 +131,7 @@
           <option name="timeStamp" value="43" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Lesson17/Events.cs</url>
+          <url>file://$PROJECT_DIR$/Lesson18/Events.cs</url>
           <line>11</line>
           <properties documentPath="D:\Git\beetroot_csharp_102\Lesson17\Events.cs" initialLine="11" containingFunctionPresentation="Method 'DoSomething'">
             <startOffsets>
@@ -177,17 +144,30 @@
           <option name="timeStamp" value="44" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Lesson17/Program.cs</url>
+          <url>file://$PROJECT_DIR$/Lesson18/Program.cs</url>
           <line>16</line>
           <properties documentPath="D:\Git\beetroot_csharp_102\Lesson17\Program.cs" initialLine="16" containingFunctionPresentation="">
             <startOffsets>
-              <option value="413" />
+              <option value="1159" />
             </startOffsets>
             <endOffsets>
-              <option value="493" />
+              <option value="1242" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="46" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Lesson18/Program.cs</url>
+          <line>73</line>
+          <properties documentPath="D:\Git\beetroot_csharp_102\Lesson18\Program.cs" initialLine="9" containingFunctionPresentation="">
+            <startOffsets>
+              <option value="3111" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3130" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="50" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
