@@ -158,19 +158,23 @@
     "friends": [
       {
         "id": 0,
-        "name": "Cherry Duffy"
+        "name": "Shawn Nixon"
       },
       {
         "id": 1,
-        "name": "Tammie Maxwell"
+        "name": "Colette Roman"
       },
       {
         "id": 2,
-        "name": "Aline Hawkins"
+        "name": "Shepard Waller"
       },
       {
         "id": 3,
-        "name": "Elsie Bowen"
+        "name": "Concepcion Hardin"
+      },
+      {
+        "id": 4,
+        "name": "Rosanne Madden"
       }
     ]
   },
