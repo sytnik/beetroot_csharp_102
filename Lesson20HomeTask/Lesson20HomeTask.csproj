@@ -3,13 +3,16 @@
         <OutputType>Exe</OutputType>
         <TargetFramework>net7.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <RootNamespace>Lesson19HomeTask</RootNamespace>
     </PropertyGroup>
-    <ItemGroup>
-        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    </ItemGroup>
     <ItemGroup>
         <Content Include="data.json">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\Lesson20Lib\Lesson20Lib.csproj" />
     </ItemGroup>
 </Project>
