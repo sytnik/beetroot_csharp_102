@@ -1,4 +1,4 @@
-﻿namespace Lesson20Lib;
+﻿namespace Lesson22Lib;
 
 public class SimplePerson
 {

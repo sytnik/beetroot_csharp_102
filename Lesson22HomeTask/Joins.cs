@@ -1,4 +1,4 @@
-﻿namespace Lesson19HomeTask;
+﻿namespace Lesson22HomeTask;
 
 public class Joins
 {
