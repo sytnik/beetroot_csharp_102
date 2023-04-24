@@ -1,7 +1,7 @@
 ﻿using System.Text;
 using System.Xml.Serialization;
 
-namespace Lesson22HomeTask;
+namespace Lesson24;
 
 public static class XmlSerialization
 {

@@ -3,7 +3,7 @@ using NPOI.SS.UserModel;
 using NPOI.SS.Util;
 using NPOI.XSSF.UserModel;
 
-namespace Lesson22HomeTask;
+namespace Lesson24;
 
 public static class NpoiTest
 {

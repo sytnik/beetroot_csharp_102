@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 
-namespace Lesson22HomeTask;
+namespace Lesson24;
 
 public static class TextJsonSerialization
 {

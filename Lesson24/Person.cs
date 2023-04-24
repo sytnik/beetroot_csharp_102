@@ -1,4 +1,4 @@
-﻿namespace Lesson22HomeTask;
+﻿namespace Lesson24;
 
 public enum Gender
 {

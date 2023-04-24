@@ -5,13 +5,15 @@
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
     <ItemGroup>
+        <InternalsVisibleTo Include="Lesson24Tests" />
         <Content Include="data.json">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
+        <None Update="persons.xml">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
         <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
         <PackageReference Include="NPOI" Version="2.6.0" />
-    </ItemGroup>
-    <ItemGroup>
-      <ProjectReference Include="..\Lesson22Lib\Lesson22Lib.csproj" />
+        <ProjectReference Include="..\Lesson24Lib\Lesson24Lib.csproj" />
     </ItemGroup>
 </Project>

@@ -1,10 +1,8 @@
 ﻿using System.Collections.Concurrent;
 using System.Net.Http.Json;
 using System.Text;
-using Lesson22Lib;
 
-
-namespace Lesson22HomeTask;
+namespace Lesson24;
 
 internal static class Program
 {

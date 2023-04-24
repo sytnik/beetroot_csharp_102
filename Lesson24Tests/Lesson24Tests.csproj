@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <IsTestProject>true</IsTestProject>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Bogus" Version="34.0.2" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
+        <PackageReference Include="Moq" Version="4.18.4" />
+        <PackageReference Include="xunit" Version="2.4.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Lesson24\Lesson24.csproj" />
+    </ItemGroup>
+
+</Project>
