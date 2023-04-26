@@ -10,7 +10,7 @@
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
         <None Update="persons.xml">
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <CopyToOutputDirectory>Never</CopyToOutputDirectory>
         </None>
         <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
         <PackageReference Include="NPOI" Version="2.6.0" />

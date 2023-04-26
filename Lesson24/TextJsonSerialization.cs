@@ -6,7 +6,9 @@ public static class TextJsonSerialization
 {
     public static void SerializePersons(this IEnumerable<Person> persons)
     {
-        var serialized = JsonSerializer.Serialize(persons);
+        var settings = new JsonSerializerOptions {WriteIndented = true};
+        var serialized = JsonSerializer.Serialize(persons,
+            new JsonSerializerOptions {WriteIndented = true});
         File.WriteAllText("persons-text.json", serialized);
     }
 

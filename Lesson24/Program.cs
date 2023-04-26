@@ -1,6 +1,7 @@
 ﻿using System.Collections.Concurrent;
 using System.Net.Http.Json;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace Lesson24;
 
@@ -9,17 +10,26 @@ internal static class Program
     private static async Task Main()
     {
         Console.OutputEncoding = Encoding.UTF8;
+        // 1. Absolute path (C:/Windows/...)
+        // 2. Relative path
+        // "data.json"
+        var exists = File.Exists("../../../data.json");
+        var e2 = Directory.Exists("../../../obj/Debug");
+        var persons = TextJsonSerialization.DeserializePersons();
+        TextJsonSerialization.SerializePersons(persons);
+        // XmlSerialization.SerializePersons(persons);
+        
         // init + get the response + deserialize as model
-        try
-        {
-            ProductModel[] result = await new HttpClient()
-                .GetFromJsonAsync<ProductModel[]>("https://www.fruityvice.com/api/fruit/all");
-            Console.ReadLine();
-        }
-        catch (HttpRequestException e)
-        {
-            Console.WriteLine(e.Message);
-        }
+        // try
+        // {
+        //     ProductModel[] result = await new HttpClient()
+        //         .GetFromJsonAsync<ProductModel[]>("https://www.fruityvice.com/api/fruit/all");
+        //     Console.ReadLine();
+        // }
+        // catch (HttpRequestException e)
+        // {
+        //     Console.WriteLine(e.Message);
+        // }
 
         
         // init httpclient
