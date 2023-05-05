@@ -1,4 +1,5 @@
-﻿using Lesson26;
+﻿using Lesson28;
+using Lesson28.Models;
 using Microsoft.EntityFrameworkCore;
 
 // add person
@@ -6,14 +7,59 @@ DisplayPersonsCount();
 var persons = GetAllPersons();
 var matches = GetPersonsByCriteria();
 var personDtos = GetPersonDtos();
-// AddPerson();
+// CreateOrderWithDetails();
+// AddPerson(new Person(52, "John", "Smith", 52, "male", "some address"));
 // DeletePerson(52);
 // DeletePerson(51);
 // UpdatePerson2(1);
 // var orders = GetAllOrders();
 // var order = GetOrderWithPersonManually(1);
+GetManyToMany();
 GetRelatedData();
 Console.WriteLine();
+
+void GetManyToMany()
+{
+    using var context = new SampleContext();
+    var orders = context.Orders
+        .Include(order => order.Products)
+        .ToArray();
+    var products = context.Products
+        .Include(product => product.Orders)
+        .ToArray();
+
+    var personProducts = context.Persons
+        // include orders
+        .Include(person => person.Orders)
+        // then include products
+        .ThenInclude(order => order.Products)
+        // first person with orders    
+        .Where(person => person.Orders
+            .Any(order => order.Products.Any()))
+        // get products from orders
+        .SelectMany(person => person.Orders)
+        .SelectMany(order => order.Products)
+        .Distinct()
+        .OrderBy(product => product.Id).ToArray();
+    Console.WriteLine();
+}
+
+
+void CreateOrderWithDetails()
+{
+    using var context = new SampleContext();
+    // create order with details
+    var newOrder = new Order(1, 1, "Some info");
+    context.Orders.Add(newOrder);
+    var orderDetails = new OrderDetails(1, 1, "Some address");
+    context.OrderDetails.Add(orderDetails);
+    context.SaveChanges();
+    // get order with details
+    var orderWithDetails = context.Orders
+        .Include(order => order.OrderDetails)
+        .FirstOrDefault(order => order.Id == 1);
+    Console.WriteLine();
+}
 
 void GetRelatedData()
 {
@@ -22,11 +68,11 @@ void GetRelatedData()
         .Include(o => o.Person)
         .ToArray();
     var persons = context.Persons
-        .Include(p => p.Order)
+        .Include(p => p.Orders)
         .ToArray();
     var personsWithOrders = context.Persons
-        .Include(p => p.Order)
-        .Where(p => p.Order != null)
+        .Include(p => p.Orders)
+        .Where(p => p.Orders.Count > 1)
         .ToArray();
     Console.WriteLine();
 }
@@ -46,17 +92,8 @@ Order[] GetAllOrders()
     return context.Orders.ToArray();
 }
 
-void AddPerson()
+void AddPerson(Person person)
 {
-    var person = new Person
-    {
-        Id = 51,
-        FirstName = "John",
-        LastName = "Smith",
-        Age = 51,
-        Address = "some address",
-        Gender = "male"
-    };
     using var context = new SampleContext();
     context.Persons.Add(person);
     context.SaveChanges();
@@ -148,4 +185,7 @@ void DisplayPersonsCount()
 }
 
 // add person dto
-public record PersonDto(int Id, string FullName);
+namespace Lesson28
+{
+    public record PersonDto(int Id, string FullName);
+}
