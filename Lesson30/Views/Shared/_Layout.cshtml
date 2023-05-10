@@ -6,6 +6,7 @@
     <title>@ViewData["Title"] -> Lesson30</title>
     <link rel="stylesheet" href="~/css/bootstrap.min.css" asp-append-version="true"/>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+    <script src="~/js/jquery.min.js"></script>
 </head>
 <body>
 <header>
@@ -35,13 +36,11 @@
         @RenderBody()
     </main>
 </div>
-
 <footer class="border-top footer text-muted">
     <div class="container">
         &copy; 2023 - Lesson30 - <a asp-controller="Home" asp-action="Privacy">Privacy</a>
     </div>
 </footer>
-<script src="~/js/jquery.min.js"></script>
 <script src="~/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
 @await RenderSectionAsync("Scripts", required: false)

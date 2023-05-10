@@ -12,6 +12,7 @@
 @*html block*@
 <div class="text-center">
 
+    <p id="meowfact"></p>
     <ul class="list-group text-start">
         @foreach (var item in todoList)
         {
@@ -22,7 +23,7 @@
     </ul>
 
 
-    <h1 class="display-4">@someText</h1>
+    <h1 class="someclass display-4">@someText</h1>
     <h2>H2 text</h2>
     <br/>
     <h3>H3 text</h3>
@@ -49,7 +50,7 @@
     </ol>
     @*<img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_light_color_272x92dp.png"*@
 
-    <table class="table table-success table-striped-columns">
+    <table id="table1" class="table table-success table-striped-columns">
         <thead>
         <th>Header1</th>
         <th>Header2</th>
@@ -66,13 +67,13 @@
         </tbody>
     </table>
 
-    <table class="table table-success table-striped-columns">
+    <table id="table2" class="table table-success table-striped-columns">
         <tr>
             <td>
-                <b>Header1</b>
+                <b id="text1" class="t1">Header1</b>
             </td>
             <td>
-                <b>Header2</b>
+                <b id="text1" class="text1 text2 t2">Header2</b>
             </td>
         </tr>
         <tr>
@@ -84,5 +85,15 @@
             <td>second item</td>
         </tr>
     </table>
-    <button type="button" class="btn btn-primary">Primary</button>
+    <button id="btnMeow" type="button" class="btn btn-primary">Meow</button>
 </div>
+<script>
+    $(document).ready(function () {
+        console.log("document is ready");
+        $("#table2").css("background-color", "red");
+        $(".text1").css("background-color", "green");
+        $(".text2").css("background-color", "yellow");
+        $(".t1").css("background-color", "blue");
+        $(".t2").css("background-color", "orange");
+    });
+</script>
