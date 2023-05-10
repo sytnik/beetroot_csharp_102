@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson29", "Lesson29\Lesson29.csproj", "{B4D1907A-2DB2-4ED3-A0B5-BCE8A445CE8F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson30", "Lesson30\Lesson30.csproj", "{B4D1907A-2DB2-4ED3-A0B5-BCE8A445CE8F}"
 EndProject
 Global
 	GlobalSection(SolutionProperties) = preSolution
