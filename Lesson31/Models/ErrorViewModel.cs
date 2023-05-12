@@ -1,4 +1,4 @@
-namespace Lesson30.Models;
+namespace Lesson31.Models;
 
 public class ErrorViewModel
 {

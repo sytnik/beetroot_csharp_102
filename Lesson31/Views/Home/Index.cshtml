@@ -1,0 +1,124 @@
+﻿@using Lesson31.Logic
+@inject SampleContext Ctx
+@*code block*@
+@{
+    ViewData["Title"] = "Main";
+    var someText = $"Today is HTML lesson!:) {DateTime.Now}";
+    var todoList = new List<string> {"item1", "item2", "item3", "item4", "item5", "item6", "item7"};
+    var bottom10users = Ctx.Persons.OrderByDescending(p => p.Id)
+        .Take(10).ToList();
+}
+@*html block*@
+<div class="row">
+    <div class="col-md-6">
+        <table id="table1" class="table table-success table-striped-columns table-hover">
+            <thead>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Age</th>
+            <th>Edit</th>
+            </thead>
+            <tbody>
+            @foreach (var person in bottom10users)
+            {
+                <tr>
+                    <td>@person.FirstName</td>
+                    <td>@person.LastName</td>
+                    <td>@person.Age</td>
+                    <td>
+                        <a asp-action="EditPerson" asp-route-id="@person.Id">Edit</a>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-6">
+        <ul class="list-group text-start">
+            @foreach (var item in todoList)
+            {
+                <li class="list-group-item">
+                    @item
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+
+<p id="meowfact"></p>
+
+
+<h1 class="someclass display-4">@someText</h1>
+<h2>H2 text</h2>
+<br/>
+<h3>H3 text</h3>
+<p class="my-red-text">Some<br/>text</p>
+<p>some usual text</p>
+<a href="https://google.com" class="h1">
+    Google it
+</a>
+<ul class="margin-big">
+    <li>item1</li>
+    <li>item2</li>
+    <li>item3</li>
+</ul>
+<ol class="margin-big">
+    <li>
+        <h1>item1</h1>
+    </li>
+    <li>
+        <b>item2</b>
+    </li>
+    <li>
+        <i>item3</i>
+    </li>
+</ol>
+@*<img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_light_color_272x92dp.png"*@
+
+<table id="table1" class="table table-success table-striped-columns">
+    <thead>
+    <th>Header1</th>
+    <th>Header2</th>
+    </thead>
+    <tbody>
+    <tr>
+        <td>1</td>
+        <td>first item</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>second item</td>
+    </tr>
+    </tbody>
+</table>
+
+<table id="table2" class="table table-success table-striped-columns">
+    <tr>
+        <td>
+            <b id="text1" class="t1">Header1</b>
+        </td>
+        <td>
+            <b id="text1" class="text1 text2 t2">Header2</b>
+        </td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>first item</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>second item</td>
+    </tr>
+</table>
+<button id="btnMeow" type="button" class="btn btn-primary">Meow</button>
+
+<script>
+    $(document).ready(function () {
+        console.log("document is ready");
+        $("#table2").css("background-color", "red");
+        $(".text1").css("background-color", "green");
+        $(".text2").css("background-color", "yellow");
+        $(".t1").css("background-color", "blue");
+        $(".t2").css("background-color", "orange");
+    });
+</script>
