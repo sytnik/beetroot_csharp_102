@@ -1,0 +1,17 @@
+@{
+    var client = new HttpClient();
+    var bottom10users = await client.GetFromJsonAsync<List<Person>>
+        ("https://localhost:7079/persons10");
+}
+
+@foreach (var person in bottom10users)
+{
+    <tr>
+        <td>@person.FirstName</td>
+        <td>@person.LastName</td>
+        <td>@person.Age</td>
+        <td>
+            <a asp-action="EditPerson" asp-route-id="@person.Id">Edit</a>
+        </td>
+    </tr>
+}

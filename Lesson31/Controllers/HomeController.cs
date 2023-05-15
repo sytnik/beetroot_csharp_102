@@ -37,4 +37,6 @@ public class HomeController : Controller
         _context.SaveChanges();
         return RedirectToAction("Index");
     }
+    
+    public IActionResult ListPersons() => View();
 }
