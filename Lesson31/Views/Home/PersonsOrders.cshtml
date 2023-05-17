@@ -1,0 +1,12 @@
+@{
+    var personsWithOrdersAndProducts =
+        Ctx.Persons
+            .Where(p => p.Orders.Any())
+            .Select(p => new PersonDto(p.FirstName, p.LastName,
+                p.Orders.Select(o =>
+                    new OrderDto(o.Info, o.OrderDetails.ShippingAddress,
+                        o.Products)).ToList()))
+            
+            .ToList();
+    ViewData["Title"] = "Persons Orders";
+}

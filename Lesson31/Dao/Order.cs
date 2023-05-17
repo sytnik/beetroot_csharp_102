@@ -12,6 +12,8 @@ public sealed record Order : EntityWithId
     public int PersonId { get; set; }
     public string Info { get; set; }
     public Person Person { get; set; }
+    // load details
     public OrderDetails OrderDetails { get; set; }
+    // load products
     public List<Product> Products { get; set; }
 }

@@ -1,17 +1,23 @@
 @{
-    var client = new HttpClient();
-    var bottom10users = await client.GetFromJsonAsync<List<Person>>
+    ViewData["Title"] = "List 10 persons";
+    var bottom10users = await Http.GetFromJsonAsync<List<Person>>
         ("https://localhost:7079/persons10");
 }
-
-@foreach (var person in bottom10users)
-{
-    <tr>
-        <td>@person.FirstName</td>
-        <td>@person.LastName</td>
-        <td>@person.Age</td>
-        <td>
-            <a asp-action="EditPerson" asp-route-id="@person.Id">Edit</a>
-        </td>
-    </tr>
-}
+<table id="table1" class="table table-success table-striped-columns table-hover">
+    @foreach (var person in bottom10users)
+    {
+        <tr>
+            <td>@person.FirstName</td>
+            <td>@person.LastName</td>
+            <td>@person.Age</td>
+            <td>
+                <a href=@($"/home/editperson/{person.Id}")>Edit via regular a</a>
+                <a asp-controller="Home"
+                   asp-action="EditPerson"
+                   asp-route-id="@person.Id">
+                    Edit
+                </a>
+            </td>
+        </tr>
+    }
+</table>

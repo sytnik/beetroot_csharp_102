@@ -1,13 +1,16 @@
-﻿using Lesson31.Logic;
-
-namespace Lesson31.Controllers;
+﻿namespace Lesson31.Controllers;
 
 public class HomeController : Controller
 {
     private readonly SampleContext _context;
     public HomeController(SampleContext context) => _context = context;
+
+    [HttpGet]
     public IActionResult Index() => View();
 
+    // [Route("[action]")]
+    [Route("PrivacyPage")]
+    // [Route("[controller]/[action]")]
     public IActionResult Privacy() => View();
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -25,10 +28,11 @@ public class HomeController : Controller
         _context.SaveChanges();
         return RedirectToAction("Index");
     }
-    
+
     // get person for edit form
+    [HttpGet]
     public IActionResult EditPerson(int id) => View(_context.Persons.Find(id));
-    
+
     [HttpPost]
     public IActionResult EditPerson(Person person)
     {
@@ -37,6 +41,9 @@ public class HomeController : Controller
         _context.SaveChanges();
         return RedirectToAction("Index");
     }
-    
+
+    [Route("[action]")]
     public IActionResult ListPersons() => View();
+
+    public IActionResult PersonsOrders() => View();
 }

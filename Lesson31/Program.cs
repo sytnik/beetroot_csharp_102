@@ -1,5 +1,3 @@
-using Lesson31.Logic;
-
 // create the web application builder
 var webApplicationBuilder = WebApplication.CreateBuilder(args);
 webApplicationBuilder.Services.AddControllersWithViews()
@@ -17,6 +15,8 @@ webApplicationBuilder.Services.AddControllersWithViews()
     .AddMvc(options => { options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()); })
     .AddJsonOptions(options => { options.JsonSerializerOptions.PropertyNamingPolicy = null; });
 // register the database context
+// add the HttpClient
+webApplicationBuilder.Services.AddScoped(_=> new HttpClient());
 webApplicationBuilder.Services.AddDbContext<SampleContext>();
 // register the database context factory and build the web application
 var webApplication = webApplicationBuilder.Build();
