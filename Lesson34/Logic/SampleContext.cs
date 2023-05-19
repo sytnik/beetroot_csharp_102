@@ -1,7 +1,10 @@
-namespace Lesson31.Logic;
+using Lesson34.Dao;
+
+namespace Lesson34.Logic;
 
 public sealed class SampleContext : DbContext
 {
+    public DbSet<Admin> Admin { get; set; }
     public DbSet<OrderDetails> OrderDetails { get; set; }
     public DbSet<Product> Products { get; set; }
     public DbSet<Person> Persons { get; set; }

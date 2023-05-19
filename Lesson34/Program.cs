@@ -1,5 +1,14 @@
+using Lesson34.Dao;
+using Lesson34.Logic;
+using Microsoft.AspNetCore.Authentication.Cookies;
+
 // create the web application builder
 var webApplicationBuilder = WebApplication.CreateBuilder(args);
+// add authentication
+webApplicationBuilder.Services
+    .AddAuthentication(options =>
+        options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(o => o.LoginPath = "/Home/Login");
 webApplicationBuilder.Services.AddControllersWithViews()
     // needed for localization and validation
     .AddViewOptions(options =>
@@ -29,10 +38,21 @@ if (!webApplication.Environment.IsDevelopment())
 webApplication.UseHttpsRedirection();
 webApplication.UseStaticFiles();
 webApplication.UseRouting();
+// user authentication and authorization
+webApplication.UseAuthentication();
 webApplication.UseAuthorization();
+//
 webApplication.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+// webApplication.Use(async (_, next) =>
+// {
+//     Console.WriteLine("Text from the first middleware. \n");
+//     await next.Invoke();
+// });
+
+
 // create minimal APIs
 ConfigureAPIs(webApplication);
 

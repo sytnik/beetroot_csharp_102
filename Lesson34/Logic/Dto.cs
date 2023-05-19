@@ -1,4 +1,6 @@
-namespace Lesson31.Logic;
+using Lesson34.Dao;
+
+namespace Lesson34.Logic;
 
 public record PersonDto(string FName, string LName, List<OrderDto> Orders);
 

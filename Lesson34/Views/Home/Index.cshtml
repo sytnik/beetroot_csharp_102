@@ -6,30 +6,53 @@
     var bottom10users = Ctx.Persons.OrderByDescending(p => p.Id)
         .Take(10).ToList();
 }
+
 @*html block*@
 <div class="row">
     <div class="col-md-6">
-        <table id="table1" class="table table-success table-striped-columns table-hover">
-            <thead>
-            <th>FirstName</th>
-            <th>LastName</th>
-            <th>Age</th>
-            <th>Edit</th>
-            </thead>
-            <tbody>
-            @foreach (var person in bottom10users)
-            {
-                <tr>
-                    <td>@person.FirstName</td>
-                    <td>@person.LastName</td>
-                    <td>@person.Age</td>
-                    <td>
-                        <a asp-action="EditPerson" asp-route-id="@person.Id">Edit</a>
-                    </td>
-                </tr>
-            }
-            </tbody>
-        </table>
+        @*user is in the db*@
+        @if (User.Identity.IsAuthenticated)
+        {
+            <h1 class="text-success">Hello, @User.Identity.Name</h1>
+        }
+        else
+        {
+            <h1 class="text-danger">Hello, guest</h1>
+        }
+        @*only admin*@
+        @if (User.IsInRole("Admin"))
+        {
+            <h1 class="text-warning">Hello, admin</h1>
+        }
+        @*only Manager*@
+        @if (User.IsInRole("Manager"))
+        {
+            <h1 class="text-warning">Hello, Manager</h1>
+        }
+        @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+        {
+            <table id="table1" class="table table-success table-striped-columns table-hover">
+                <thead>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Age</th>
+                <th>Edit</th>
+                </thead>
+                <tbody>
+                @foreach (var person in bottom10users)
+                {
+                    <tr>
+                        <td>@person.FirstName</td>
+                        <td>@person.LastName</td>
+                        <td>@person.Age</td>
+                        <td>
+                            <a asp-action="EditPerson" asp-route-id="@person.Id">Edit</a>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        }
     </div>
     <div class="col-md-6">
         <ul class="list-group text-start">

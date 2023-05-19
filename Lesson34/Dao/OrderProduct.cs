@@ -1,4 +1,4 @@
-namespace Lesson31.Dao;
+namespace Lesson34.Dao;
 
 public sealed record OrderProduct
 {

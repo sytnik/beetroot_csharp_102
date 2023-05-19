@@ -1,6 +1,3 @@
-global using Lesson31.Dao;
-global using Lesson31.Logic;
-global using Lesson31.Models;
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.EntityFrameworkCore;
 global using System.ComponentModel.DataAnnotations.Schema;

@@ -1,4 +1,4 @@
-namespace Lesson31.Logic;
+namespace Lesson34.Logic;
 
 public static class EntityExtensions
 {
