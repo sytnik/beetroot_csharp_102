@@ -9,6 +9,10 @@ public sealed record Product : EntityWithId
         Price = price;
     }
 
+    public Product()
+    {
+    }
+
     public string Name { get; set; }
     public decimal Price { get; set; }
     public List<Order> Orders { get; set; }

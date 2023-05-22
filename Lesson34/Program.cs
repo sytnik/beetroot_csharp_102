@@ -26,7 +26,10 @@ webApplicationBuilder.Services.AddControllersWithViews()
 // register the database context
 // add the HttpClient
 webApplicationBuilder.Services.AddScoped(_=> new HttpClient());
+webApplicationBuilder.Services.AddTransient<SampleContext>();
 webApplicationBuilder.Services.AddDbContext<SampleContext>();
+// add the hosted service
+webApplicationBuilder.Services.AddHostedService<AppHostedService>();
 // register the database context factory and build the web application
 var webApplication = webApplicationBuilder.Build();
 if (!webApplication.Environment.IsDevelopment())

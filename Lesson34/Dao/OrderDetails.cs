@@ -9,6 +9,10 @@ public sealed record OrderDetails : EntityWithId
         ShippingAddress = shippingAddress;
     }
 
+    public OrderDetails()
+    {
+    }
+
     public string ShippingAddress { get; set; }
     public int OrderId { get; set; }
     public Order Order { get; set; }

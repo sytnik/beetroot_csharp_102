@@ -6,6 +6,7 @@ public sealed class SampleContext : DbContext
 {
     public DbSet<Admin> Admin { get; set; }
     public DbSet<OrderDetails> OrderDetails { get; set; }
+    public DbSet<OrderProduct> OrderProduct { get; set; }
     public DbSet<Product> Products { get; set; }
     public DbSet<Person> Persons { get; set; }
     public DbSet<Order> Orders { get; set; }

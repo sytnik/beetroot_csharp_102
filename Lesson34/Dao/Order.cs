@@ -9,6 +9,10 @@ public sealed record Order : EntityWithId
         Info = info;
     }
 
+    public Order()
+    {
+    }
+
     public int PersonId { get; set; }
     public string Info { get; set; }
     public Person Person { get; set; }
