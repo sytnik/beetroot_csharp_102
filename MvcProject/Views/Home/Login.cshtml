@@ -1,0 +1,22 @@
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model Lesson36.Dao.Admin
+
+@{
+    ViewData["Title"] = "Login";
+}
+<div class="col-md-6 m-auto">
+    <form asp-controller="Home" asp-action="Login">
+        @Html.HiddenFor(a => a.ReturnUrl)
+        <div class="mb-3">
+            <label class="form-label">UserName</label>
+            <input asp-for="Login" class="form-control"/>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input asp-for="Pass" class="form-control"/>
+        </div>
+        <div class="d-grid gap-2">
+            <button class="btn btn-primary" type="submit">Login</button>
+        </div>
+    </form>
+</div>
