@@ -6,31 +6,17 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 var webApplicationBuilder = WebApplication.CreateBuilder(args);
 // add authentication
 webApplicationBuilder.Services
-    .AddAuthentication(options =>
-        options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddCookie(o => o.LoginPath = "/Home/Login");
-webApplicationBuilder.Services.AddControllersWithViews()
-    // needed for localization and validation
-    .AddViewOptions(options =>
-    {
-        options.HtmlHelperOptions.ClientValidationEnabled = true;
-        options.HtmlHelperOptions.Html5DateRenderingMode =
-            Microsoft.AspNetCore.Mvc.Rendering.Html5DateRenderingMode.CurrentCulture;
-    })
-    .AddDataAnnotationsLocalization()
-    .AddMvcLocalization()
-    .Services
-    // needed for localization and validation
-    .AddMvc(options => { options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()); })
-    .AddJsonOptions(options => { options.JsonSerializerOptions.PropertyNamingPolicy = null; });
+    .AddAuthentication(options => options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options => options.LoginPath = "/Home/Login");
+webApplicationBuilder.Services.AddControllersWithViews();
+// register the HttpClient
+webApplicationBuilder.Services.AddScoped(_ => new HttpClient());
 // register the database context
-// add the HttpClient
-webApplicationBuilder.Services.AddScoped(_=> new HttpClient());
-// webApplicationBuilder.Services.AddScoped<SampleContext>();
-// webApplicationBuilder.Services.AddTransient<SampleContext>();
 webApplicationBuilder.Services.AddDbContext<SampleContext>();
 // add the hosted service
 webApplicationBuilder.Services.AddHostedService<AppHostedService>();
+// for the api documentation
+webApplicationBuilder.Services.AddEndpointsApiExplorer().AddSwaggerGen();
 // register the database context factory and build the web application
 var webApplication = webApplicationBuilder.Build();
 if (!webApplication.Environment.IsDevelopment())
@@ -45,41 +31,22 @@ webApplication.UseRouting();
 // user authentication and authorization
 webApplication.UseAuthentication();
 webApplication.UseAuthorization();
-//
-webApplication.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
-
-// webApplication.Use(async (_, next) =>
-// {
-//     Console.WriteLine("Text from the first middleware. \n");
-//     await next.Invoke();
-// });
-
-
+webApplication.UseSwagger().UseSwaggerUI();
+webApplication.MapDefaultControllerRoute();
 // create minimal APIs
 ConfigureAPIs(webApplication);
-
 webApplication.Run();
 
-
-
-
-void ConfigureAPIs(WebApplication application)
+void ConfigureAPIs(IEndpointRouteBuilder application)
 {
     application.MapGet("/helloworld", () => "Hello World, lesson 32!");
-    application.MapGet("/persons10", (SampleContext db) =>
-        db.Persons.Take(10).ToList());
-// api with parameters
+    application.MapGet("/persons10", (SampleContext db) => db.Persons.Take(10).ToList());
+    // api with parameters
     application.MapPost("/helloworld", (string id) => "Hello World, id: " + id);
-// api with parameters and body
-    application.MapPost("/helloworldwithbody", ([FromBody] string param) =>
-        "Hello World, body param: " + param);
-
+    // api with parameters and body
+    application.MapPost("/helloworldwithbody", ([FromBody] string param) => "Hello World, body param: " + param);
     // create api for person(s)
-    application.MapGet("/person/list",
-        (SampleContext context) =>
-            context.Persons.ToList());
+    application.MapGet("/person/list", (SampleContext context) => context.Persons.ToList());
     // id has to be an integer
     // https://localhost:7079/person/1
     application.MapGet("/person/{id:int}",
@@ -88,24 +55,25 @@ void ConfigureAPIs(WebApplication application)
             var person = context.Persons.Find(id);
             return person == null ? Results.NotFound() : Results.Ok(person);
         });
-    application.MapPost("/person",
-        (Person person, SampleContext context) =>
+    application.MapPost("/person", (PersonApiDto entity, SampleContext context) =>
         {
-            if (context.Persons.Any(p => p.Id == person.Id))
+            if (context.Persons.Any(person => person.Id == entity.Id))
                 return Results.BadRequest("Person already exists");
-            context.Persons.Add(person);
+            var dbPerson = new Person(entity.Id, entity.FirstName, entity.LastName, entity.Age,
+                entity.Gender, entity.Address);
+            context.Persons.Add(dbPerson);
             context.SaveChanges();
-            return Results.Created($"/person/{person.Id}", person);
+            return Results.Created($"/person/{dbPerson.Id}", dbPerson);
         });
     application.MapPut("/person",
-        (Person person, SampleContext context) =>
+        (Person entity, SampleContext context) =>
         {
-            if (!context.Persons.Any(p => p.Id == person.Id))
+            if (!context.Persons.Any(person => person.Id == entity.Id))
                 return Results.BadRequest("Person is not updateable, because it not exists");
-            var dbPerson = context.Persons.Find(person.Id);
-            context.Entry(dbPerson).CurrentValues.SetValues(person);
+            var dbPerson = context.Persons.Find(entity.Id);
+            context.Entry(dbPerson!).CurrentValues.SetValues(entity);
             context.SaveChanges();
-            return Results.Created($"/person/{person.Id}", person);
+            return Results.Created($"/person/{entity.Id}", entity);
         });
     // https://localhost:7079/person/?id=1
     application.MapDelete("/person",

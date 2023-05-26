@@ -20,7 +20,7 @@ public class HomeController : Controller
     public IActionResult Index() => View();
 
     // [Route("[action]")]
-    [Route("PrivacyPage")]
+    // [Route("PrivacyPage")]
     // [Route("[controller]/[action]")]
     public IActionResult Privacy() => View();
 
@@ -53,7 +53,7 @@ public class HomeController : Controller
         return RedirectToAction("Index");
     }
 
-    [Route("[action]"), Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public IActionResult ListPersons() => View();
 
     public IActionResult PersonsOrders() => View();
@@ -142,5 +142,25 @@ public class HomeController : Controller
         _context.OrderProduct.AddRange(orderProducts);
         _context.SaveChanges();
         return RedirectToAction("Index");
+    }
+
+    public IActionResult ListOrders() => View();
+    public IActionResult EditOrder(int id) => View(_context.Orders.Find(id));
+
+    [HttpPost]
+    public IActionResult EditOrder(Order order)
+    {
+        var dbOrder = _context.Orders.Find(order.Id);
+        if (_context.Persons.Find(order.PersonId) == null)
+            ModelState.AddModelError("personId",
+                $"Person with Id={order.PersonId} specified not found");
+        else
+        {
+            _context.Entry(dbOrder).CurrentValues.SetValues(order);
+            _context.SaveChanges();
+            return RedirectToAction("ListOrders");
+        }
+
+        return View(order);
     }
 }

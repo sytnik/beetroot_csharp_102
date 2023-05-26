@@ -1,0 +1,18 @@
+@{
+    ViewData["Title"] = "List 10 orders";
+    var orders = Ctx.Orders.Take(10).ToList();
+}
+<table id="table1" class="table table-success table-striped-columns table-hover">
+    @foreach (var order in orders)
+    {
+        <tr>
+            <td>@order.Id</td>
+            <td>@order.Info</td>
+            <td>
+                <a asp-action="EditOrder" asp-route-id="@order.Id">
+                    Edit
+                </a>
+            </td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,23 @@
+@model Lesson36.Dao.Order
+
+@{
+    ViewData["Title"] = "Edit Order";
+}
+
+<div class="col-md-6 card p-3 mx-auto">
+    <h2>Edit Order @Model.Id</h2>
+    <form asp-action="EditOrder" method="post">
+        @Html.HiddenFor(order => order.Id)
+        <div class="form-group">
+            <label asp-for="PersonId">Person Id</label>
+            <input asp-for="PersonId" class="form-control"/>
+            <span asp-validation-for="PersonId" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Info">Last Name</label>
+            <input asp-for="Info" class="form-control"/>
+            <span asp-validation-for="Info" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary mt-5">Edit</button>
+    </form>
+</div>

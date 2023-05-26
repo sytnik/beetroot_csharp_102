@@ -3,6 +3,7 @@ namespace Lesson36.Dao;
 public sealed record Person : EntityWithId
 {
     [Required(ErrorMessage = "First Name is required.")]
+    [MinLength(3, ErrorMessage = "First Name must be at least 3 characters long.")]
     [StringLength(100, ErrorMessage = "First Name cannot be longer than 100 characters.")]
     public string FirstName { get; set; }
 
