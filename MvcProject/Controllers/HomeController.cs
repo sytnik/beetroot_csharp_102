@@ -22,7 +22,7 @@ public class HomeController : Controller
     // [Route("[action]")]
     // [Route("PrivacyPage")]
     // [Route("[controller]/[action]")]
-    public IActionResult Privacy() => View();
+    public IActionResult PrivacyPage() => View();
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error() => View(new ErrorViewModel
@@ -50,6 +50,7 @@ public class HomeController : Controller
         var dbPerson = _context.Persons.Find(person.Id);
         _context.Entry(dbPerson).CurrentValues.SetValues(person);
         _context.SaveChanges();
+        var persons = _context.Persons.ToList();
         return RedirectToAction("Index");
     }
 

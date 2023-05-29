@@ -39,10 +39,19 @@ public sealed class SampleContext : DbContext
                         new {orderProduct.ProductId, orderProduct.OrderId}));
     }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) =>
-        // how to connect to the database
-        optionsBuilder.UseSqlServer(
-            "Data Source=(localdb)\\MSSQLLocalDB;" +
-            "Initial Catalog=Beetroot;" +
-            "Integrated Security=True;");
+
+    public SampleContext(DbContextOptions<SampleContext> options) : base(options)
+    {
+    }
+
+    // DI for the connection string
+    // private readonly IConfiguration _configuration;
+    // public SampleContext(IConfiguration configuration) => _configuration = configuration;
+    //
+    // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) =>
+    //     // how to connect to the database
+    //     optionsBuilder.UseSqlServer(
+    //         _configuration.GetConnectionString("DefaultConnection")
+    //         // "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Beetroot;Integrated Security=True;"
+    //     );
 }

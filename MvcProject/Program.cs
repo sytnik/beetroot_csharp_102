@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 
 // create the web application builder
 var webApplicationBuilder = WebApplication.CreateBuilder(args);
+// get connection string from appsettings.json
+var isDevelopment = webApplicationBuilder.Environment.IsDevelopment();
 // add authentication
 webApplicationBuilder.Services
     .AddAuthentication(options => options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme)
@@ -12,7 +14,8 @@ webApplicationBuilder.Services.AddControllersWithViews();
 // register the HttpClient
 webApplicationBuilder.Services.AddScoped(_ => new HttpClient());
 // register the database context
-webApplicationBuilder.Services.AddDbContext<SampleContext>();
+webApplicationBuilder.Services.AddDbContext<SampleContext>(builder =>
+    builder.UseSqlServer(webApplicationBuilder.Configuration.GetConnectionString("DefaultConnection")));
 // add the hosted service
 webApplicationBuilder.Services.AddHostedService<AppHostedService>();
 // for the api documentation
@@ -22,9 +25,8 @@ var webApplication = webApplicationBuilder.Build();
 if (!webApplication.Environment.IsDevelopment())
 {
     webApplication.UseExceptionHandler("/Home/Error");
-    webApplication.UseHsts();
 }
-
+webApplication.UseHsts();
 webApplication.UseHttpsRedirection();
 webApplication.UseStaticFiles();
 webApplication.UseRouting();
@@ -56,15 +58,15 @@ void ConfigureAPIs(IEndpointRouteBuilder application)
             return person == null ? Results.NotFound() : Results.Ok(person);
         });
     application.MapPost("/person", (PersonApiDto entity, SampleContext context) =>
-        {
-            if (context.Persons.Any(person => person.Id == entity.Id))
-                return Results.BadRequest("Person already exists");
-            var dbPerson = new Person(entity.Id, entity.FirstName, entity.LastName, entity.Age,
-                entity.Gender, entity.Address);
-            context.Persons.Add(dbPerson);
-            context.SaveChanges();
-            return Results.Created($"/person/{dbPerson.Id}", dbPerson);
-        });
+    {
+        if (context.Persons.Any(person => person.Id == entity.Id))
+            return Results.BadRequest("Person already exists");
+        var dbPerson = new Person(entity.Id, entity.FirstName, entity.LastName, entity.Age,
+            entity.Gender, entity.Address);
+        context.Persons.Add(dbPerson);
+        context.SaveChanges();
+        return Results.Created($"/person/{dbPerson.Id}", dbPerson);
+    });
     application.MapPut("/person",
         (Person entity, SampleContext context) =>
         {
