@@ -40,6 +40,7 @@ public sealed class SampleContext : DbContext
     }
 
 
+    // just for DI in program.cs
     public SampleContext(DbContextOptions<SampleContext> options) : base(options)
     {
     }

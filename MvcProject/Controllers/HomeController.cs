@@ -67,8 +67,11 @@ public class HomeController : Controller
     [HttpPost]
     public async Task<IActionResult> Login(Admin admin)
     {
-        var dbAdmin = _context.Admin.FirstOrDefault(a =>
-            a.Login == admin.Login && a.Pass == admin.Pass);
+        var hashedPassword = PasswordEncryption.HashPassword(admin.Pass);
+        var dbAdmin = _context.Admin
+            .Where(a => a.Login == admin.Login && a.Pass == hashedPassword)
+            .Select(a => new AdminDto(a.Login, a.Role))
+            .FirstOrDefault();
         if (dbAdmin == null) return RedirectToAction("Login");
         await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
             new ClaimsPrincipal(new ClaimsIdentity(
@@ -81,6 +84,8 @@ public class HomeController : Controller
             return Redirect(admin.ReturnUrl);
         return RedirectToAction("Index");
     }
+
+    public record AdminDto(string Login, string Role);
 
     // logout the user
     public async Task<IActionResult> Logout()
@@ -163,5 +168,13 @@ public class HomeController : Controller
         }
 
         return View(order);
+    }
+
+    public IActionResult HashAll()
+    {
+        var admins = _context.Admin.ToList();
+        admins.ForEach(a => a.Pass = PasswordEncryption.HashPassword(a.Pass));
+        _context.SaveChanges();
+        return RedirectToAction("Index");
     }
 }

@@ -16,6 +16,7 @@ webApplicationBuilder.Services.AddScoped(_ => new HttpClient());
 // register the database context
 webApplicationBuilder.Services.AddDbContext<SampleContext>(builder =>
     builder.UseSqlServer(webApplicationBuilder.Configuration.GetConnectionString("DefaultConnection")));
+// webApplicationBuilder.Services.AddDbContext<SampleContext>();
 // add the hosted service
 webApplicationBuilder.Services.AddHostedService<AppHostedService>();
 // for the api documentation
