@@ -88,7 +88,50 @@ void ConfigureAPIs(IEndpointRouteBuilder application)
             context.SaveChanges();
             return Results.Ok("Person deleted");
         });
+    
+    // simple approach
+    application.MapPost("/admin", (Admin admin, SampleContext context) =>
+    {
+        if (context.Admin.Any(a => a.Id == admin.Id))
+            return Results.BadRequest("Admin already exists");
+        admin.Id = 0;
+        admin.Pass = PasswordEncryption.HashPassword(admin.Pass);
+        context.Admin.Add(admin);
+        context.SaveChanges();
+        return Results.Created($"/person/{admin.Id}", admin);
+    });
+    
+    // right approach
+    application.MapPost("/admindto", (AdminDto admin, SampleContext context) =>
+    {
+        context.Admin.Add(new Admin(admin.Login, PasswordEncryption.HashPassword(admin.Pass), admin.Role));
+        context.SaveChanges();
+        var first = context.Admin.First(a => a.Login == admin.Login);
+        return Results.Created($"/person/{first.Id}", first);
+    });
+    
+    application.MapGet("/admin/{id:int}",
+        (int id, SampleContext context) =>
+        {
+            var admin = context.Admin.Find(id);
+            return admin == null ? Results.NotFound() : Results.Ok(admin);
+        });
+    
+    application.MapPut("/admin",
+        (Admin admin, SampleContext context) =>
+        {
+            if (!context.Admin.Any(a => a.Id == admin.Id))
+                return Results.BadRequest("Admin is not updateable, because it not exists");
+            context.Entry(admin).State = EntityState.Modified;
+            // var dbPerson = context.Persons.Find(admin.Id);
+            // context.Entry(dbPerson!).CurrentValues.SetValues(admin);
+            context.SaveChanges();
+            return Results.Created($"/person/{admin.Id}", admin);
+        });
+    
 }
+
+record AdminDto(string Login, string Pass, string Role);
 
 // just for integration tests
 public partial class Program

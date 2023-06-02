@@ -19,6 +19,8 @@ public sealed record Person : EntityWithId
     public string Gender { get; set; }
 
     [StringLength(200, ErrorMessage = "Address cannot be longer than 200 characters.")]
+    [RegularExpression("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}$",
+        ErrorMessage = "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one digit.")]
     public string? Address { get; set; }
 
     public List<Order> Orders { get; set; }
