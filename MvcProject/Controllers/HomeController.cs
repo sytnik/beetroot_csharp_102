@@ -6,6 +6,7 @@ using Lesson36.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Localization;
 using Person = Lesson36.Dao.Person;
 
 namespace Lesson36.Controllers;
@@ -13,11 +14,21 @@ namespace Lesson36.Controllers;
 // [LoggingFilter]
 public partial class HomeController : Controller
 {
+    private readonly IStringLocalizer<HomeController> _localizer;
     private readonly SampleContext _context;
-    public HomeController(SampleContext context) => _context = context;
+    public HomeController(SampleContext context, IStringLocalizer<HomeController> localizer)
+    {
+        _context = context;
+        _localizer = localizer;
+    }
 
     // [HttpGet, LoggingFilter]
-    public IActionResult Index() => View();
+    public IActionResult Index()
+    {
+        var str = _localizer["TestString"];
+        var str2 = _localizer.GetString("TestString");
+        return View();
+    }
 
     // [Route("[action]")]
     // [Route("PrivacyPage")]
@@ -47,13 +58,23 @@ public partial class HomeController : Controller
     [HttpPost]
     public IActionResult EditPerson(Person person)
     {
+        var req = Request;
         var dbPerson = _context.Persons.Find(person.Id);
         _context.Entry(dbPerson).CurrentValues.SetValues(person);
         _context.SaveChanges();
-        var persons = _context.Persons.ToList();
+        if(Request.Form.Files.Any()) UploadImage(person.Id, Request.Form.Files[0]);
         return RedirectToAction("Index");
     }
 
+    public void UploadImage(int userId, IFormFile file)
+    {
+        var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", "users",
+            $"{userId}{Path.GetExtension(file.FileName)}");
+        // ibrowserfile - only async, IFormFile both sync and async
+        using var stream = new FileStream(path, FileMode.Create);
+        file.CopyTo(stream);
+    }
+    
     [Authorize(Roles = "Admin")]
     public IActionResult ListPersons() => View();
 
