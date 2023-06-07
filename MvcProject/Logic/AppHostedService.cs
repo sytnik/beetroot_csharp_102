@@ -1,4 +1,4 @@
-namespace Lesson36.Logic;
+namespace MvcProject.Logic;
 
 public class AppHostedService : IHostedService
 {

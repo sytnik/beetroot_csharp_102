@@ -1,4 +1,4 @@
-namespace Lesson36.Models;
+namespace MvcProject.Models;
 
 public class ErrorViewModel
 {

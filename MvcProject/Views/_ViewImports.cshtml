@@ -1,6 +1,8 @@
-﻿@using Lesson36.Logic
+﻿@using Microsoft.AspNetCore.Mvc.Localization
 @using Microsoft.Extensions.Localization
+@using MvcProject.Logic
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @inject SampleContext Ctx
 @inject HttpClient Http
 @* @inject IStringLocalizer Loc *@
+@inject IViewLocalizer Loc 

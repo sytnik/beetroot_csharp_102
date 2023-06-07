@@ -1,6 +1,6 @@
-using Lesson36.Dao;
+using MvcProject.Dao;
 
-namespace Lesson36.Logic;
+namespace MvcProject.Logic;
 
 public record PersonDto(string FName, string LName, List<OrderDto> Orders);
 

@@ -21,14 +21,14 @@ namespace MvcProject.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Home_Index_uk_UA {
+    internal class Index_en_US {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Home_Index_uk_UA() {
+        internal Index_en_US() {
         }
         
         /// <summary>
@@ -38,7 +38,7 @@ namespace MvcProject.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MvcProject.Resources.Home.Index.uk-UA", typeof(Home_Index_uk_UA).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MvcProject.Resources.Controllers.HomeController.Index.en-US", typeof(Index_en_US).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -60,7 +60,7 @@ namespace MvcProject.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Це тестова строка.
+        ///   Looks up a localized string similar to Some testing string.
         /// </summary>
         internal static string TestString {
             get {

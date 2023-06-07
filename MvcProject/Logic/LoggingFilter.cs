@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace Lesson36.Logic;
+namespace MvcProject.Logic;
 
 public class LoggingFilter : ActionFilterAttribute
 {

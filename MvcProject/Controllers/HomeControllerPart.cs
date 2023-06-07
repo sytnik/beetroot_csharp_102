@@ -1,8 +1,8 @@
 using Bogus;
-using Lesson36.Dao;
-using Person = Lesson36.Dao.Person;
+using MvcProject.Dao;
+using Person = MvcProject.Dao.Person;
 
-namespace Lesson36.Controllers;
+namespace MvcProject.Controllers;
 
 public partial class HomeController
 {

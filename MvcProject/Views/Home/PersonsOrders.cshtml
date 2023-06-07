@@ -1,5 +1,5 @@
 @using System.Text.Json
-@using Lesson36.Logic
+@using MvcProject.Logic
 @{
     var personsWithOrdersAndProducts = Ctx.Persons
         .Include(p => p.Orders).ThenInclude(o => o.Products)

@@ -1,7 +1,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Lesson36.Logic;
+namespace MvcProject.Logic;
 
 public static class Settings
 {

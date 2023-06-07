@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Lesson36.Resources {
+namespace MvcProject.Resources {
     using System;
     
     
@@ -38,7 +38,7 @@ namespace Lesson36.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Lesson36.Resources.Home.Index.en-US", typeof(Home_Index_en_US).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MvcProject.Resources.Home.Index.en-US", typeof(Home_Index_en_US).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

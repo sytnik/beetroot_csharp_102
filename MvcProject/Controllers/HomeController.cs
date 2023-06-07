@@ -1,15 +1,14 @@
 ﻿using System.Security.Claims;
-using Bogus;
-using Lesson36.Dao;
-using Lesson36.Logic;
-using Lesson36.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Localization;
-using Person = Lesson36.Dao.Person;
+using MvcProject.Dao;
+using MvcProject.Logic;
+using MvcProject.Models;
+using Person = MvcProject.Dao.Person;
 
-namespace Lesson36.Controllers;
+namespace MvcProject.Controllers;
 
 // [LoggingFilter]
 public partial class HomeController : Controller

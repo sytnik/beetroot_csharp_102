@@ -1,4 +1,4 @@
-namespace Lesson36.Dao;
+namespace MvcProject.Dao;
 
 public sealed record Order : EntityWithId
 {

@@ -1,4 +1,4 @@
-@using Lesson36.Dao
+@using MvcProject.Dao
 @{
     ViewData["Title"] = "List 10 persons";
     var bottom10users = await Http.GetFromJsonAsync<List<Person>>

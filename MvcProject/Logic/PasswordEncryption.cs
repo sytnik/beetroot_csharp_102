@@ -1,6 +1,7 @@
-using System.Text;
 using System.Security.Cryptography;
-namespace Lesson36.Logic;
+using System.Text;
+
+namespace MvcProject.Logic;
 
 // our own encryption class
 public static class PasswordEncryption

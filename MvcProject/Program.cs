@@ -1,9 +1,10 @@
 using System.Globalization;
-using Lesson36.Dao;
-using Lesson36.Logic;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Options;
+using MvcProject;
+using MvcProject.Dao;
+using MvcProject.Logic;
 
 // create the web application builder
 var webApplicationBuilder = WebApplication.CreateBuilder(args);
@@ -149,9 +150,12 @@ void ConfigureAPIs(IEndpointRouteBuilder application)
     
 }
 
-record AdminDto(string Login, string Pass, string Role);
+namespace MvcProject
+{
+    record AdminDto(string Login, string Pass, string Role);
 
 // just for integration tests
-public partial class Program
-{
+    public partial class Program
+    {
+    }
 }
