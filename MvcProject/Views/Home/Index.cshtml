@@ -1,4 +1,6 @@
-﻿@*code block*@
+﻿@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@*code block*@
 @{
     ViewData["Title"] = "Main";
     var someText = $"Today is HTML lesson!:) {DateTime.Now}";
@@ -8,7 +10,19 @@
 }
 
 @*html block*@
-<h1>@Loc["TestString"]</h1>
+@* <h1>@Loc["TestString"]</h1> *@
+<h2>@ViewBag.TestString</h2>
+<form id="selectLanguage" asp-controller="Home" asp-action="SetLanguage" 
+      method="post" class="form-horizontal" role="form">
+    <select name="culture" onchange="this.form.submit();">
+        @foreach (var culture in new[] { "en-US", "uk-UA" })
+        {
+            <!option value="@culture"
+                     @(Context.Features.Get<IRequestCultureFeature>().RequestCulture.Culture.Name.Equals(culture) ? "selected" : "")>@GetCultureName(culture)</!option>
+        }
+    </select>
+    <input type="hidden" name="returnUrl" value="@Context.Request.Path" />
+</form>
 <img src="https://google.com/someimage.img" alt="Some not valid image">
 <img src="/img/icons/someicon.ico" asp-append-version="true">
 <div class="row">
@@ -146,3 +160,13 @@
         $(".t2").css("background-color", "orange");
     });
 </script>
+
+@functions {
+    private static string GetCultureName(string culture) => culture switch
+    {
+        "en-US" => "English",
+        "fr-FR" => "French",
+        "uk-UA" => "Ukrainian",
+        _ => culture
+        };
+}

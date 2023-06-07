@@ -10,12 +10,8 @@ using MvcProject.Logic;
 var webApplicationBuilder = WebApplication.CreateBuilder(args);
 // get connection string from appsettings.json
 var isDevelopment = webApplicationBuilder.Environment.IsDevelopment();
+// 1st part
 webApplicationBuilder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
-// var supportedCultures = new[] { "en-US", "uk-UA" };
-// var localizationOptions = new RequestLocalizationOptions().SetDefaultCulture(supportedCultures[0])
-//     .AddSupportedCultures(supportedCultures)
-//     .AddSupportedUICultures(supportedCultures);
-// webApplicationBuilder.Services.Configure<RequestLocalizationOptions>(localizationOptions);
 webApplicationBuilder.Services.Configure<RequestLocalizationOptions>(options =>
 {
     var supportedCultures = new[] { new CultureInfo("en-US"), new CultureInfo("uk-UA") };
@@ -23,6 +19,7 @@ webApplicationBuilder.Services.Configure<RequestLocalizationOptions>(options =>
     options.SupportedCultures = supportedCultures;
     options.SupportedUICultures = supportedCultures;
 });
+
 // add authentication
 webApplicationBuilder.Services
     .AddAuthentication(options => options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme)
@@ -44,8 +41,10 @@ if (!webApplication.Environment.IsDevelopment())
 {
     webApplication.UseExceptionHandler("/Home/Error");
 }
+// middleware for localization
 var locOptions = webApplication.Services.GetService<IOptions<RequestLocalizationOptions>>();
 webApplication.UseRequestLocalization(locOptions.Value);
+
 webApplication.UseHsts();
 webApplication.UseHttpsRedirection();
 webApplication.UseStaticFiles();

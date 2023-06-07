@@ -60,7 +60,7 @@ namespace MvcProject.Resources.Controllers {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 12344.
+        ///   Looks up a localized string similar to English value.
         /// </summary>
         internal static string TestString {
             get {

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Localization;
 using MvcProject.Dao;
 using MvcProject.Logic;
@@ -24,8 +25,12 @@ public partial class HomeController : Controller
     // [HttpGet, LoggingFilter]
     public IActionResult Index()
     {
-        var str = _localizer["TestString"];
-        var str2 = _localizer.GetString("TestString");
+        var total = _context.Orders
+            .Where(o=>o.OrderProducts.Any())
+            .Take(1)
+            .Select(o => o.OrderProducts.Sum(op => op.Count * op.Product.Price))
+            .FirstOrDefault();
+        ViewBag.TestString = _localizer["TestString"];
         return View();
     }
 
@@ -42,14 +47,26 @@ public partial class HomeController : Controller
     public IActionResult CreatePerson() => View();
 
     [HttpPost]
-    public IActionResult CreatePerson(Person person)
+    public async Task<IActionResult> CreatePerson(Person person)
     {
-        var newId = _context.Persons.Max(p => p.Id) + 1;
-        _context.Persons.Add(person with {Id = newId});
-        _context.SaveChanges();
+        var newId = await _context.Persons.MaxAsync(p => p.Id) + 1;
+        await _context.Persons.AddAsync(person with {Id = newId});
+        await _context.SaveChangesAsync();
         return RedirectToAction("Index");
     }
 
+    [HttpPost]
+    public IActionResult SetLanguage(string culture, string returnUrl)
+    {
+        Response.Cookies.Append(
+            CookieRequestCultureProvider.DefaultCookieName,
+            CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
+            new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) }
+        );
+
+        return LocalRedirect(returnUrl);
+    }
+    
     // get person for edit form
     [HttpGet]
     public IActionResult EditPerson(int id) => View(_context.Persons.Find(id));

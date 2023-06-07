@@ -27,4 +27,7 @@ public sealed record Order : EntityWithId
 
     // load products
     public List<Product> Products { get; set; }
+
+    public List<OrderProduct> OrderProducts { get; set; }
+    [NotMapped] public int Total { get; set; }
 }

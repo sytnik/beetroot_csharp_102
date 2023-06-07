@@ -23,7 +23,20 @@ public sealed class SampleContext : DbContext
             .HasOne(order => order.Person)
             .WithMany(person => person.Orders)
             .HasForeignKey(order => order.PersonId);
-        // many to many
+        // many to many (without extra fields)!!!
+        // builder.Entity<Order>()
+        //     .HasMany(order => order.Products)
+        //     .WithMany(product => product.Orders)
+        //     .UsingEntity<OrderProduct>(
+        //         typeBuilder => typeBuilder
+        //             .HasOne(orderProduct => orderProduct.Product).WithMany()
+        //             .HasForeignKey(orderProduct => orderProduct.ProductId),
+        //         typeBuilder => typeBuilder
+        //             .HasOne(orderProduct => orderProduct.Order).WithMany()
+        //             .HasForeignKey(orderProduct => orderProduct.OrderId),
+        //         typeBuilder => typeBuilder
+        //             .HasKey(orderProduct =>
+        //                 new {orderProduct.ProductId, orderProduct.OrderId}));
         builder.Entity<Order>()
             .HasMany(order => order.Products)
             .WithMany(product => product.Orders)
@@ -32,8 +45,10 @@ public sealed class SampleContext : DbContext
                     .HasOne(orderProduct => orderProduct.Product).WithMany()
                     .HasForeignKey(orderProduct => orderProduct.ProductId),
                 typeBuilder => typeBuilder
-                    .HasOne(orderProduct => orderProduct.Order).WithMany()
-                    .HasForeignKey(orderProduct => orderProduct.OrderId),
+                    .HasOne(orderProduct => orderProduct.Order)
+                    .WithMany(order => order.OrderProducts)
+                    .HasForeignKey(orderProduct => orderProduct.OrderId)
+                    .OnDelete(DeleteBehavior.Restrict),
                 typeBuilder => typeBuilder
                     .HasKey(orderProduct =>
                         new {orderProduct.ProductId, orderProduct.OrderId}));

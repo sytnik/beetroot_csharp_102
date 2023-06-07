@@ -17,40 +17,13 @@
       <Folder Include="wwwroot\img\users\" />
     </ItemGroup>
     <ItemGroup>
-      <EmbeddedResource Update="Resources\Home.Index.en-US.resx">
-        <Generator>ResXFileCodeGenerator</Generator>
-        <LastGenOutput>Home.Index.en-US.Designer.cs</LastGenOutput>
-      </EmbeddedResource>
-      <EmbeddedResource Update="Resources\Home.Index.uk-UA.resx">
-        <Generator>ResXFileCodeGenerator</Generator>
-        <LastGenOutput>Home.Index.uk-UA.Designer.cs</LastGenOutput>
-      </EmbeddedResource>
-      <EmbeddedResource Update="Resources\Controllers\HomeController\Index.en-US.resx">
-        <Generator>ResXFileCodeGenerator</Generator>
-        <LastGenOutput>Home.Index.en-US.Designer.cs</LastGenOutput>
-      </EmbeddedResource>
       <EmbeddedResource Update="Resources\Controllers\HomeController.en-US.resx">
         <Generator>ResXFileCodeGenerator</Generator>
-        <LastGenOutput>HomeController.en-US.Designer.cs</LastGenOutput>
+        <LastGenOutput>HomeController.en-US.Designer.cs1</LastGenOutput>
       </EmbeddedResource>
     </ItemGroup>
     <ItemGroup>
-      <Compile Update="Resources\Home.Index.en-US.Designer.cs">
-        <DesignTime>True</DesignTime>
-        <AutoGen>True</AutoGen>
-        <DependentUpon>Home.Index.en-US.resx</DependentUpon>
-      </Compile>
-      <Compile Update="Resources\Home.Index.uk-UA.Designer.cs">
-        <DesignTime>True</DesignTime>
-        <AutoGen>True</AutoGen>
-        <DependentUpon>Home.Index.uk-UA.resx</DependentUpon>
-      </Compile>
-      <Compile Update="Resources\Controllers\HomeController\Index.en-US.Designer.cs">
-        <DesignTime>True</DesignTime>
-        <AutoGen>True</AutoGen>
-        <DependentUpon>Index.en-US.resx</DependentUpon>
-      </Compile>
-      <Compile Update="Resources\Controllers\HomeController.en-US.Designer.cs">
+      <Compile Update="Resources\Controllers\HomeController.en-US.Designer.cs1">
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
         <DependentUpon>HomeController.en-US.resx</DependentUpon>
