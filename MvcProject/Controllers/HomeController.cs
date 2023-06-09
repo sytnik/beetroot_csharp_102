@@ -11,22 +11,21 @@ using Person = MvcProject.Dao.Person;
 
 namespace MvcProject.Controllers;
 
-// [LoggingFilter]
 public partial class HomeController : Controller
 {
     private readonly IStringLocalizer<HomeController> _localizer;
     private readonly SampleContext _context;
+
     public HomeController(SampleContext context, IStringLocalizer<HomeController> localizer)
     {
         _context = context;
         _localizer = localizer;
     }
-
-    // [HttpGet, LoggingFilter]
+    
     public IActionResult Index()
     {
         var total = _context.Orders
-            .Where(o=>o.OrderProducts.Any())
+            .Where(o => o.OrderProducts.Any())
             .Take(1)
             .Select(o => o.OrderProducts.Sum(op => op.Count * op.Product.Price))
             .FirstOrDefault();
@@ -61,12 +60,12 @@ public partial class HomeController : Controller
         Response.Cookies.Append(
             CookieRequestCultureProvider.DefaultCookieName,
             CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
-            new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) }
+            new CookieOptions {Expires = DateTimeOffset.UtcNow.AddYears(1)}
         );
 
         return LocalRedirect(returnUrl);
     }
-    
+
     // get person for edit form
     [HttpGet]
     public IActionResult EditPerson(int id) => View(_context.Persons.Find(id));
@@ -78,7 +77,7 @@ public partial class HomeController : Controller
         var dbPerson = _context.Persons.Find(person.Id);
         _context.Entry(dbPerson).CurrentValues.SetValues(person);
         _context.SaveChanges();
-        if(Request.Form.Files.Any()) UploadImage(person.Id, Request.Form.Files[0]);
+        if (Request.Form.Files.Any()) UploadImage(person.Id, Request.Form.Files[0]);
         return RedirectToAction("Index");
     }
 
@@ -90,7 +89,7 @@ public partial class HomeController : Controller
         using var stream = new FileStream(path, FileMode.Create);
         file.CopyTo(stream);
     }
-    
+
     [Authorize(Roles = "Admin")]
     public IActionResult ListPersons() => View();
 
@@ -104,25 +103,35 @@ public partial class HomeController : Controller
     [HttpPost]
     public async Task<IActionResult> Login(Admin admin)
     {
+        // if (_context.Admin.Any(a => a.Login == admin.Login))
+        // {
+        //     ModelState.AddModelError("Login",
+        //         $"Admin with Login{admin.Login} already exists");
+        //     return View(admin);
+        // }
+
         var hashedPassword = PasswordEncryption.HashPassword(admin.Pass);
         var dbAdmin = _context.Admin
             .Where(a => a.Login == admin.Login && a.Pass == hashedPassword)
             .Select(a => new AdminDto(a.Login, a.Role))
             .FirstOrDefault();
         if (dbAdmin == null) return RedirectToAction("Login");
-        await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
+        await SignIn(HttpContext, dbAdmin);
+        if (!string.IsNullOrWhiteSpace(admin.ReturnUrl) && Url.IsLocalUrl(admin.ReturnUrl))
+            return Redirect(admin.ReturnUrl);
+        return RedirectToAction("Index");
+    }
+
+    private static async Task SignIn(HttpContext context, AdminDto dbAdmin)
+    {
+        await context.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
             new ClaimsPrincipal(new ClaimsIdentity(
                 new List<Claim>
                 {
                     new(ClaimTypes.Name, dbAdmin.Login),
                     new(ClaimTypes.Role, dbAdmin.Role)
                 }, CookieAuthenticationDefaults.AuthenticationScheme)));
-        if (!string.IsNullOrWhiteSpace(admin.ReturnUrl) && Url.IsLocalUrl(admin.ReturnUrl))
-            return Redirect(admin.ReturnUrl);
-        return RedirectToAction("Index");
     }
-
-    public record AdminDto(string Login, string Role);
 
     // logout the user
     public async Task<IActionResult> Logout()

@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.VisualStudio.TestPlatform.TestHost;
 
 namespace MvcProject.IntegrationTests;
 
@@ -10,7 +9,7 @@ public class SampleTests : IClassFixture<WebApplicationFactory<Program>>
 
     [Theory]
     [InlineData("/")]
-    [InlineData("/PrivacyPage")]
+    [InlineData("/Home/PrivacyPage")]
     [InlineData("/Home/CreatePerson")]
     [InlineData("/Home/PersonsOrders")]
     public async Task GetSomePages(string url)

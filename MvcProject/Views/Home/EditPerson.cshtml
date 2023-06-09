@@ -44,7 +44,7 @@
 
         <div class="form-group">
             <label asp-for="Age">Age by user</label>
-            <select asp-for="Age" class="form-control">
+            <select asp-for="Age" class="form-select">
                 @foreach (var g in persons)
                 {
                     <option value="@g.Item1">@g.Item2</option>

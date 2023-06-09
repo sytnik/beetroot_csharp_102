@@ -2,7 +2,6 @@ using System.Globalization;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Options;
-using MvcProject;
 using MvcProject.Dao;
 using MvcProject.Logic;
 
@@ -19,7 +18,6 @@ webApplicationBuilder.Services.Configure<RequestLocalizationOptions>(options =>
     options.SupportedCultures = supportedCultures;
     options.SupportedUICultures = supportedCultures;
 });
-
 // add authentication
 webApplicationBuilder.Services
     .AddAuthentication(options => options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme)
@@ -120,7 +118,7 @@ void ConfigureAPIs(IEndpointRouteBuilder application)
     });
     
     // right approach
-    application.MapPost("/admindto", (AdminDto admin, SampleContext context) =>
+    application.MapPost("/admindto", (ApiAdminDto admin, SampleContext context) =>
     {
         context.Admin.Add(new Admin(admin.Login, PasswordEncryption.HashPassword(admin.Pass), admin.Role));
         context.SaveChanges();
@@ -149,12 +147,10 @@ void ConfigureAPIs(IEndpointRouteBuilder application)
     
 }
 
-namespace MvcProject
-{
-    record AdminDto(string Login, string Pass, string Role);
-
+// namespace MvcProject
+// {
 // just for integration tests
     public partial class Program
     {
     }
-}
+// }

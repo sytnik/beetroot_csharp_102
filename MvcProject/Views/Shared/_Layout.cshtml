@@ -1,5 +1,7 @@
-﻿<!DOCTYPE html>
-<html lang="en" data-bs-theme="light">
+﻿@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -15,7 +17,7 @@
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <nav class="navbar navbar-expand-md navbar-toggleable-md navbar-light bg-white border-bottom box-shadow mb-3">
         <div class="container-fluid">
             <a class="navbar-brand" asp-controller="Home" asp-action="Index"><i class="bi-alarm"></i>MvcProject</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
@@ -55,6 +57,19 @@
                         </li>
                     }
                 </ul>
+                <form id="selectLanguage" asp-controller="Home" asp-action="SetLanguage"
+                      method="post" role="form">
+                    <select class="form-select" name="culture" onchange="this.form.submit();">
+                        @foreach (var culture in new[] {"en-US", "uk-UA"})
+                        {
+                            <!option value="@culture"
+                                     @(Context.Features.Get<IRequestCultureFeature>().RequestCulture.Culture.Name.Equals(culture) ? "selected" : "")>
+                                @GetCultureName(culture)
+                            </!option>
+                        }
+                    </select>
+                    <input type="hidden" name="returnUrl" value="@Context.Request.Path"/>
+                </form>
             </div>
         </div>
     </nav>
@@ -63,8 +78,8 @@
     @* render index or privacy page *@
     @RenderBody()
 </div>
-<footer class="border-top footer text-muted">
-    <div class="container">
+<footer class="fixed-bottom border-top footer text-muted text-center">
+    <div class="h5 py-3">
         &copy; 2023 - MvcProject - <a asp-controller="Home" asp-action="PrivacyPage">Privacy</a>
     </div>
 </footer>
@@ -72,3 +87,15 @@
 <script src="~/js/site.js" asp-append-version="true"></script>
 </body>
 </html>
+
+@functions {
+
+    private static string GetCultureName(string culture) => culture switch
+    {
+        "en-US" => "English",
+        "fr-FR" => "French",
+        "uk-UA" => "Ukrainian",
+        _ => culture
+        };
+
+}
