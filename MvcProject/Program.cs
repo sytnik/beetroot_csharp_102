@@ -67,7 +67,7 @@ void ConfigureAPIs(IEndpointRouteBuilder application)
     // create api for person(s)
     application.MapGet("/person/list", (SampleContext context) => context.Persons.ToList());
     // id has to be an integer
-    // https://localhost:7079/person/1
+    // https://localhost/person/1
     application.MapGet("/person/{id:int}",
         (int id, SampleContext context) =>
         {
@@ -147,10 +147,7 @@ void ConfigureAPIs(IEndpointRouteBuilder application)
     
 }
 
-// namespace MvcProject
-// {
 // just for integration tests
     public partial class Program
     {
     }
-// }

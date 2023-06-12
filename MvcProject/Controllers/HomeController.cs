@@ -67,7 +67,7 @@ public partial class HomeController : Controller
     }
 
     // get person for edit form
-    [HttpGet]
+    [Authorize(Roles = "Admin")]
     public IActionResult EditPerson(int id) => View(_context.Persons.Find(id));
 
     [HttpPost]

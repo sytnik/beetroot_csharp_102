@@ -1,8 +1,9 @@
 @using MvcProject.Dao
 @{
     ViewData["Title"] = "List 10 persons";
-    var bottom10users = await Http.GetFromJsonAsync<List<Person>>
-        ("https://localhost:7079/persons10");
+    var bottom10users = Ctx.Persons.Take(10).ToList();
+    // var bottom10users = await Http.GetFromJsonAsync<List<Person>>
+    //     ($"https://localhost:443/persons10");
 }
 <table id="table1" class="table table-success table-striped-columns table-hover">
     @foreach (var person in bottom10users)
