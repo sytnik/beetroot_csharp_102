@@ -24,13 +24,18 @@ public partial class HomeController : Controller
     
     public IActionResult Index()
     {
+        GetSomeData();
+        ViewBag.TestString = _localizer["TestString"];
+        return View();
+    }
+
+    private void GetSomeData()
+    {
         var total = _context.Orders
             .Where(o => o.OrderProducts.Any())
             .Take(1)
             .Select(o => o.OrderProducts.Sum(op => op.Count * op.Product.Price))
             .FirstOrDefault();
-        ViewBag.TestString = _localizer["TestString"];
-        return View();
     }
 
     // [Route("[action]")]
