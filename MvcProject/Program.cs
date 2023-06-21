@@ -18,7 +18,7 @@ webApplicationBuilder.Services.Configure<RequestLocalizationOptions>(options =>
     options.SupportedUICultures = supportedCultures;
 });
 // add authentication
-webApplicationBuilder.Services.AddAuthentication().AddCookie(options => options.LoginPath = "/home/login");
+webApplicationBuilder.Services.AddAuthentication().AddCookie(options => options.LoginPath = "/Home/Login");
 webApplicationBuilder.Services.AddControllersWithViews();
 // register the HttpClient
 webApplicationBuilder.Services.AddScoped(_ => new HttpClient());
