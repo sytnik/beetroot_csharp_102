@@ -1,5 +1,4 @@
-﻿using System.Security.Claims;
-using Microsoft.AspNetCore.Authentication;
+﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Localization;
@@ -41,6 +40,7 @@ public partial class HomeController : Controller
     // [Route("[action]")]
     // [Route("PrivacyPage")]
     // [Route("[controller]/[action]")]
+    [Authorize]
     public IActionResult PrivacyPage() => View();
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -78,7 +78,6 @@ public partial class HomeController : Controller
     [HttpPost]
     public IActionResult EditPerson(Person person)
     {
-        var req = Request;
         var dbPerson = _context.Persons.Find(person.Id);
         _context.Entry(dbPerson).CurrentValues.SetValues(person);
         _context.SaveChanges();
@@ -90,7 +89,6 @@ public partial class HomeController : Controller
     {
         var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", "users",
             $"{userId}{Path.GetExtension(file.FileName)}");
-        // ibrowserfile - only async, IFormFile both sync and async
         using var stream = new FileStream(path, FileMode.Create);
         file.CopyTo(stream);
     }
@@ -102,46 +100,28 @@ public partial class HomeController : Controller
 
     // render the login form
     public IActionResult Login() =>
-        View(new Admin {ReturnUrl = HttpContext.Request.Query["ReturnUrl"].ToString()});
+        View(new Admin {ReturnUrl = HttpContext.Request.Query["ReturnUrl"]});
 
     // login the user
     [HttpPost]
     public async Task<IActionResult> Login(Admin admin)
     {
-        // if (_context.Admin.Any(a => a.Login == admin.Login))
-        // {
-        //     ModelState.AddModelError("Login",
-        //         $"Admin with Login{admin.Login} already exists");
-        //     return View(admin);
-        // }
-
-        var hashedPassword = PasswordEncryption.HashPassword(admin.Pass);
+        var hashedPassword = LoginExtensions.HashPassword(admin.Pass);
         var dbAdmin = _context.Admin
             .Where(a => a.Login == admin.Login && a.Pass == hashedPassword)
             .Select(a => new AdminDto(a.Login, a.Role))
             .FirstOrDefault();
         if (dbAdmin == null) return RedirectToAction("Login");
-        await SignIn(HttpContext, dbAdmin);
+        await LoginExtensions.SignIn(HttpContext, dbAdmin);
         if (!string.IsNullOrWhiteSpace(admin.ReturnUrl) && Url.IsLocalUrl(admin.ReturnUrl))
             return Redirect(admin.ReturnUrl);
         return RedirectToAction("Index");
     }
 
-    private static async Task SignIn(HttpContext context, AdminDto dbAdmin)
-    {
-        await context.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
-            new ClaimsPrincipal(new ClaimsIdentity(
-                new List<Claim>
-                {
-                    new(ClaimTypes.Name, dbAdmin.Login),
-                    new(ClaimTypes.Role, dbAdmin.Role)
-                }, CookieAuthenticationDefaults.AuthenticationScheme)));
-    }
-
     // logout the user
     public async Task<IActionResult> Logout()
     {
-        await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+        await HttpContext.SignOutAsync();
         return RedirectToAction("Index");
     }
 
@@ -168,7 +148,7 @@ public partial class HomeController : Controller
     public IActionResult HashAll()
     {
         var admins = _context.Admin.ToList();
-        admins.ForEach(a => a.Pass = PasswordEncryption.HashPassword(a.Pass));
+        admins.ForEach(a => a.Pass = LoginExtensions.HashPassword(a.Pass));
         _context.SaveChanges();
         return RedirectToAction("Index");
     }

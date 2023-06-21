@@ -1,5 +1,4 @@
 using System.Globalization;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Options;
 using MvcProject.Dao;
@@ -19,15 +18,15 @@ webApplicationBuilder.Services.Configure<RequestLocalizationOptions>(options =>
     options.SupportedUICultures = supportedCultures;
 });
 // add authentication
-webApplicationBuilder.Services
-    .AddAuthentication(options => options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddCookie(options => options.LoginPath = "/Home/Login");
+webApplicationBuilder.Services.AddAuthentication().AddCookie(options => options.LoginPath = "/home/login");
 webApplicationBuilder.Services.AddControllersWithViews();
 // register the HttpClient
 webApplicationBuilder.Services.AddScoped(_ => new HttpClient());
 // register the database context
 webApplicationBuilder.Services.AddDbContext<SampleContext>(builder =>
     builder.UseSqlServer(webApplicationBuilder.Configuration.GetConnectionString("DefaultConnection")));
+// webApplicationBuilder.Services.AddDbContext<SampleContext>(builder =>
+//     builder.UseInMemoryDatabase(databaseName: "Beetroot"));
 // webApplicationBuilder.Services.AddDbContext<SampleContext>();
 // add the hosted service
 webApplicationBuilder.Services.AddHostedService<AppHostedService>();
@@ -48,7 +47,7 @@ webApplication.UseHttpsRedirection();
 webApplication.UseStaticFiles();
 webApplication.UseRouting();
 // user authentication and authorization
-webApplication.UseAuthentication();
+// webApplication.UseAuthentication();
 webApplication.UseAuthorization();
 webApplication.UseSwagger().UseSwaggerUI();
 webApplication.MapDefaultControllerRoute();
@@ -111,7 +110,7 @@ void ConfigureAPIs(IEndpointRouteBuilder application)
         if (context.Admin.Any(a => a.Id == admin.Id))
             return Results.BadRequest("Admin already exists");
         admin.Id = 0;
-        admin.Pass = PasswordEncryption.HashPassword(admin.Pass);
+        admin.Pass = LoginExtensions.HashPassword(admin.Pass);
         context.Admin.Add(admin);
         context.SaveChanges();
         return Results.Created($"/person/{admin.Id}", admin);
@@ -120,7 +119,7 @@ void ConfigureAPIs(IEndpointRouteBuilder application)
     // right approach
     application.MapPost("/admindto", (ApiAdminDto admin, SampleContext context) =>
     {
-        context.Admin.Add(new Admin(admin.Login, PasswordEncryption.HashPassword(admin.Pass), admin.Role));
+        context.Admin.Add(new Admin(admin.Login, LoginExtensions.HashPassword(admin.Pass), admin.Role));
         context.SaveChanges();
         var first = context.Admin.First(a => a.Login == admin.Login);
         return Results.Created($"/person/{first.Id}", first);
